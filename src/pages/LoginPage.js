@@ -22,10 +22,20 @@ import React, { useCallback } from "react";
 import { authenticationService } from "../authorization/Authentication";
 
 // import resources
-import {WelcomeText} from '../res/strings'
 
 // reactstrap components
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import {
+  Button,
+  Card,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col
+} from "reactstrap";
 
 const Login = ({history}) => {
 
@@ -50,26 +60,45 @@ const handleLogin = useCallback(
       document.body.classList.remove("register-page");
     };
   });
+
   return (
     <>
       <div
-        className="page-header"
+        className="section section-image section-login"
         style={{
           backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
         }}
       >
-        <div className="filter" />
         <Container>
           <Row>
-            <Col className="ml-auto mr-auto" lg="4">
-              <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">{WelcomeText}</h3>
-                <Form className="login-form" onSubmit={handleLogin}>
+            <Col className="mx-auto" lg="4" md="6">
+              <Card className="card-register">
+                <h3 className="title mx-auto">Welcome</h3>
+                <Form onSubmit={handleLogin} className="register-form">
                   <label>Email</label>
-                  <Input input name="email" placeholder="Email" type="text" />
+                  <InputGroup className="form-group-no-border">
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="nc-icon nc-email-85" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input name="email" placeholder="Email" type="email" />
+                  </InputGroup>
                   <label>Password</label>
-                  <Input input name="password" placeholder="Password" type="password" />
-                  <Button block className="btn-round" color="danger">
+                  <InputGroup className="form-group-no-border">
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="nc-icon nc-key-25" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input name="password" placeholder="Password" type="password" />
+                  </InputGroup>
+                  <Button
+                    block
+                    className="btn-round"
+                    color="danger"
+                    type="submit"
+                  >
                     Login
                   </Button>
                 </Form>
@@ -99,13 +128,7 @@ const handleLogin = useCallback(
             </Col>
           </Row>
         </Container>
-        <div className="footer register-footer text-center">
-          <h6>
-            © {new Date().getFullYear()}, made with{" "}
-            <i className="fa fa-heart heart" /> by Creative Tim
-          </h6>
-        </div>
-      </div>
+      </div>{" "}
     </>
   );
 }

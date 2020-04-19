@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 
 // import dependencies
-import { authenticationService } from '../authorization/Authentication'
+
 import {RoutesService} from '../services/RoutesService'
 import {PrivateRoute} from '../authorization/PrivateRoute'
-import { Switch, Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, NavLink, Link, Route, BrowserRouter as Router } from 'react-router-dom';
 
 // import resources
 
 // reactstrap components
 import {NavItem} from "reactstrap";
+import NavBar from 'components/NavBar';
 
 export class MainPage extends Component {
 
@@ -17,21 +18,14 @@ export class MainPage extends Component {
         super(props)
       
         this.state = {
-          routes: [],
-          currentUser:null
+          routes : []
         }
       }
-
-      componentDidMount(){
-        this.setState({
-            routes: RoutesService(authenticationService.currentUserRole)
-      })
-      console.log(this.state.routes)
-    }
 
     renderRoutes() {
       const state = this.state;
       const { routes } = state;
+
     
       return routes.map(route => {
         const routeKey = `${route.key} ${route.title}`;
@@ -63,8 +57,10 @@ export class MainPage extends Component {
         return (
           <Router>
               <div>
-                This is main page
-                {this.renderRoutes()}
+                <NavBar links = {this.renderNavLinks}></NavBar>
+                <div>
+                  {this.renderRoutes()}
+                </div>
               </div>
             </Router>
         )

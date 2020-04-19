@@ -6,13 +6,13 @@ import AdministratorHome from '../components/Administrator/AdministratorHome'
 export const RoutesService = (userRole) =>{
     let routes;
 
-    switch ( userRole ){
+    switch ( userRole ) {
         case 'Student':
             routes = [
                 {
                   title: 'Home',
                   key: 'home',
-                  link: '/home',
+                  link: '/',
                   component: StudentHome
                 },
                 {
@@ -29,7 +29,7 @@ export const RoutesService = (userRole) =>{
                 {
                   title: 'Home',
                   key: 'home',
-                  link: '/home',
+                  link: '/',
                   component: TeacherHome
                 }
               ]
