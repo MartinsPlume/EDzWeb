@@ -63,6 +63,7 @@ export class MainPage extends Component {
         return (
           <Router>
               <div>
+                This is main page
                 {this.renderRoutes()}
               </div>
             </Router>

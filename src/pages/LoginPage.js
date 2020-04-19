@@ -20,7 +20,6 @@ import React, { useCallback } from "react";
 
 // import dependencies
 import { authenticationService } from "../authorization/Authentication";
-import { useHistory } from "react-router-dom";
 
 // import resources
 import {WelcomeText} from '../res/strings'
@@ -28,7 +27,7 @@ import {WelcomeText} from '../res/strings'
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
-const LoginPage = ({history}) => {
+const Login = ({history}) => {
 
 const handleLogin = useCallback(
     async event => {
@@ -36,7 +35,7 @@ const handleLogin = useCallback(
         const { email, password } = event.target.elements;
         try {
         await authenticationService.login(email.value, password.value);
-        history.push("/home");
+        history.push("/");
         } catch (error) {
         alert(error);
         }
@@ -85,6 +84,18 @@ const handleLogin = useCallback(
                   </Button>
                 </div>
               </Card>
+              <div className="col text-center">
+                <Button
+                  className="btn-round"
+                  outline
+                  color="neutral"
+                  href="/register"
+                  size="lg"
+                  target="_blank"
+                >
+                  Register
+                </Button>
+              </div>
             </Col>
           </Row>
         </Container>
@@ -99,4 +110,4 @@ const handleLogin = useCallback(
   );
 }
 
-export default LoginPage;
+export default Login;

@@ -18,12 +18,10 @@
 */
 import React from "react";
 
-// import resources
-import {WelcomeText} from '../res/strings'
-
 // reactstrap components
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
+// core components
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -45,7 +43,7 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">{WelcomeText}</h3>
+                <h3 className="title mx-auto">Welcome</h3>
                 <Form className="register-form">
                   <label>Email</label>
                   <Input placeholder="Email" type="text" />

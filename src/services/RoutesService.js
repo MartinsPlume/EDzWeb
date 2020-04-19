@@ -22,6 +22,7 @@ export const RoutesService = (userRole) =>{
                   component: StudentExercises
                 }
               ]
+              break;
               
         case 'Teacher':
             routes = [
