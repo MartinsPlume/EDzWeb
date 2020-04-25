@@ -8,12 +8,13 @@ import StudentExercises from '../components/Student/StudentExercises'
 import {RoutesService} from '../services/RoutesService'
 import {authenticationService} from '../authorization/Authentication'
 import {PrivateRoute} from '../authorization/PrivateRoute'
-import { Switch, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Link, NavLink, BrowserRouter as Router } from 'react-router-dom';
+
 
 // import resources
 
 // reactstrap components
-import {NavItem, Nav} from "reactstrap";
+import {Button, NavItem, Nav} from "reactstrap";
 import NavigationBar from 'components/NavigationBar';
 
 export class MainPage extends Component {
@@ -24,15 +25,17 @@ export class MainPage extends Component {
         this.state = {
           routes : [
             {
-              title: 'Home',
+              title: ' Home',
               key: 'home',
               link: '/',
+              icon: 'nc-icon nc-globe',
               component: StudentHome
             },
             {
-              title: 'Exercises',
+              title: ' Exercises',
               key: 'exercises',
               link: '/exercises',
+              icon: 'nc-icon nc-tile-56',
               component: StudentExercises
             }
           ]
@@ -55,11 +58,25 @@ export class MainPage extends Component {
       
       return routes.map(route => {
           return (
-            <NavItem>
-              <Link to={route.link} key={route.key}>
-                  <div className="menu-item">{route.title}</div>
-              </Link>
-            </NavItem>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink to={route.link} key={route.key}>
+                  <Button
+                    className="btn-round mr-1"
+                    outline
+                    size = "lg"
+                    color="default"
+                    type="button"
+                  >
+                    <i
+                              aria-hidden={false}
+                              className={route.icon}
+                            />
+                    {route.title}
+                  </Button>
+                </NavLink>
+              </NavItem>
+            </Nav>
           );
         });
       }

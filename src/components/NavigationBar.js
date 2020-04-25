@@ -21,13 +21,10 @@ import { authenticationService } from '../authorization/Authentication'
 
 // reactstrap components
 import {
-    UncontrolledCollapse,
     NavbarBrand,
     Navbar,
-    NavItem,
-    NavLink,
-    Nav,
-    Container
+    Container,
+    Col
   } from "reactstrap";
 
 
@@ -48,13 +45,14 @@ class NavigationBar extends Component {
     render(){
         return (
             <div>
-                <Navbar color='dark' dark expand='md'>
-                    <NavbarBrand href="/">EDz</NavbarBrand>
-                    <Nav className="mr-auto" navbar>
-                        {this.state.links}
-                    </Nav>
-                    
-                </Navbar>
+              <Navbar className="bg-success" expand="lg">
+                <NavbarBrand href='/'>
+                    EDz
+                </NavbarBrand>
+                <Container>
+                    {this.state.links}
+                </Container>
+              </Navbar>
             </div>
         )
     }
