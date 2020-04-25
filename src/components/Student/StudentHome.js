@@ -57,7 +57,7 @@ function StudentHome() {
               <h3>Start designing your landing page here.</h3>
               <br />
               <Button
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                href="https://www.youtube.com/watch?v=wrOM4zJcJjM&t="
                 className="btn-round mr-1"
                 color="neutral"
                 target="_blank"

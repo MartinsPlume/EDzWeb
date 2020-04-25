@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 
+import StudentHome from '../components/Student/StudentHome'
+import StudentExercises from '../components/Student/StudentExercises'
+
 // import dependencies
 
 import {RoutesService} from '../services/RoutesService'
+import {authenticationService} from '../authorization/Authentication'
 import {PrivateRoute} from '../authorization/PrivateRoute'
-import { Switch, NavLink, Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Link, BrowserRouter as Router } from 'react-router-dom';
 
 // import resources
 
 // reactstrap components
-import {NavItem} from "reactstrap";
-import NavBar from 'components/NavBar';
+import {NavItem, Nav} from "reactstrap";
+import NavigationBar from 'components/NavigationBar';
 
 export class MainPage extends Component {
 
@@ -18,53 +22,62 @@ export class MainPage extends Component {
         super(props)
       
         this.state = {
-          routes : []
+          routes : [
+            {
+              title: 'Home',
+              key: 'home',
+              link: '/',
+              component: StudentHome
+            },
+            {
+              title: 'Exercises',
+              key: 'exercises',
+              link: '/exercises',
+              component: StudentExercises
+            }
+          ]
         }
       }
 
-    renderRoutes() {
+      renderRoutes() {
+        const state = this.state;
+        const { routes } = state;
+      
+        return routes.map(route => {
+          const routeKey = `${route.key} ${route.title}`;
+          return <PrivateRoute exact key={routeKey} path={route.link} component={route.component}/>;
+        });
+      }
+
+      renderMenuItems() {
       const state = this.state;
       const { routes } = state;
-
-    
+      
       return routes.map(route => {
-        const routeKey = `${route.key} ${route.title}`;
-        return <PrivateRoute exact key={routeKey} path={route.link} component={route.component}/>;
-      });
-  }
-  
-  renderNavLinks() {
-    const state = this.state;
-    const { routes } = state;
-  
-    return routes.map(route => {
-        return(
-        <NavItem key={route.key}>
-              <Link to={route.link} key={route.key}
-              className={this.activeTab === route.tab ? "active" : ""}
-              onClick={() => {
-                this.toggle (route.tab)
-              }}
-              >
-                  {route.title}
+          return (
+            <NavItem>
+              <Link to={route.link} key={route.key}>
+                  <div className="menu-item">{route.title}</div>
               </Link>
-        </NavItem>
-        )
-    });
-  }
-
-  render() {
-        return (
-          <Router>
-              <div>
-                <NavBar links = {this.renderNavLinks}></NavBar>
+            </NavItem>
+          );
+        });
+      }
+      
+        render() {
+          return (
+              <Router>
                 <div>
-                  {this.renderRoutes()}
+                    <NavigationBar links={this.renderMenuItems()}/>
+                      <div className="Navigation-Bar">
+                          <Switch>
+                            {this.renderRoutes()}
+                          </Switch>
+                      </div>
                 </div>
-              </div>
-            </Router>
-        )
-    }
-}
+              </Router>
+          )
+        }
+      }
 
 export default MainPage
