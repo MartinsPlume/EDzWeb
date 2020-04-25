@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // import dependencies
 import { Route, BrowserRouter as Router } from 'react-router-dom';
@@ -14,9 +14,10 @@ import MainPage from 'pages/MainPage'
 // import reactstrap components
 
 function App() {
+  
   return (
     <Router>
-      <PrivateRoute exact key = 'main' path='/' component = {MainPage}></PrivateRoute>
+      <PrivateRoute exact key = 'main' path='/'  component = {MainPage}></PrivateRoute>
       <Route exact path='/login' key = 'login' component={LoginPage} />
       <Route exact path='/register' key = 'register' component={RegisterPage} />
     </Router>

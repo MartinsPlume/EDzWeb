@@ -10,38 +10,18 @@ export const RoutesService = (userRole) =>{
         case 'Student':
             routes = [
                 {
-                  title: 'Home',
+                  title: ' Home',
                   key: 'home',
                   link: '/',
+                  icon: 'nc-icon nc-globe',
                   component: StudentHome
                 },
                 {
-                  title: 'Exercises',
+                  title: ' Exercises',
                   key: 'exercises',
                   link: '/exercises',
+                  icon: 'nc-icon nc-tile-56',
                   component: StudentExercises
-                }
-              ]
-              break;
-              
-        case 'Teacher':
-            routes = [
-                {
-                  title: 'Home',
-                  key: 'home',
-                  link: '/',
-                  component: TeacherHome
-                }
-              ]
-              break;
-
-        case 'Administrator':
-            routes = [
-                {
-                  title: 'Login',
-                  key: 'login',
-                  link: '/login',
-                  component: AdministratorHome
                 }
               ]
               break;

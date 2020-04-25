@@ -19,14 +19,21 @@
 import React, { Component } from 'react'
 import { authenticationService } from '../authorization/Authentication'
 
+// import dependencies
+
 // reactstrap components
 import {
+    Button,
     NavbarBrand,
+    NavItem,
+    NavLink,
+    Nav,
     Navbar,
-    Container,
-    Col
+    Container
   } from "reactstrap";
 
+  //
+  import {LogOffText} from '../res/strings'
 
 class NavigationBar extends Component {
 
@@ -45,12 +52,33 @@ class NavigationBar extends Component {
     render(){
         return (
             <div>
-              <Navbar className="bg-success" expand="lg">
+              <Navbar className="bg-success" expand="md">
                 <NavbarBrand href='/'>
                     EDz
                 </NavbarBrand>
                 <Container>
                     {this.state.links}
+                </Container>
+                <Container>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink href={'/login'}>
+                                <Button
+                                onClick = {this.handleLogout}
+                                    className="btn-round mr-1"
+                                    outline
+                                    color="warning"
+                                    type="button"
+                                >
+                                    <i
+                                            aria-hidden={false}
+                                            className='nc-icon nc-button-power'
+                                            />
+                                    {LogOffText}
+                                </Button>
+                            </NavLink>
+                        </NavItem>
+                    </Nav>
                 </Container>
               </Navbar>
             </div>

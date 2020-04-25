@@ -4,14 +4,15 @@ import { handleResponse } from './HandleResponse';
 import jwt_decode from 'jwt-decode'
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(sessionStorage.getItem('currentUser')));
-const currentUserRole = new BehaviorSubject(sessionStorage.getItem('userRole'))
+const currentUserRoleSubject = new BehaviorSubject(sessionStorage.getItem('userRole'))
 
 export const authenticationService = {
     login,
     logout,
     currentUser: currentUserSubject.asObservable(),
+    currentUserRole: currentUserRoleSubject.asObservable(),
     get currentUserValue () { return currentUserSubject.value },
-    get currentUserRole () {return currentUserRole.var}
+    get currentUserRoleValue () {return currentUserRoleSubject.value}
 };
 
 function login(email, password) {
