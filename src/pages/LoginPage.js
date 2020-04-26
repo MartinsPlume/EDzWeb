@@ -62,7 +62,6 @@ const handleLogin = useCallback(
   });
 
   return (
-    <>
       <div
         className="section section-image section-login"
         style={{
@@ -128,8 +127,13 @@ const handleLogin = useCallback(
             </Col>
           </Row>
         </Container>
-      </div>{" "}
-    </>
+        <div className="footer register-footer text-center">
+          <h6>
+            © {new Date().getFullYear()}, designed with{" "}
+            <i className="fa fa-heart heart" /> by Creative Tim
+          </h6>
+        </div>
+      </div>
   );
 }
 

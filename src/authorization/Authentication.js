@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
-import { EDzControlLogin} from './JWTConfig';
-import { handleResponse } from './HandleResponse';
+import { EDzControlLogin,EDzControlRegister} from './JWTConfig';
+import { handleLoginResponse, handleRegisterResponse } from './HandleResponse';
 import jwt_decode from 'jwt-decode'
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(sessionStorage.getItem('currentUser')));
@@ -8,6 +8,7 @@ const currentUserRoleSubject = new BehaviorSubject(sessionStorage.getItem('userR
 
 export const authenticationService = {
     login,
+    register,
     logout,
     currentUser: currentUserSubject.asObservable(),
     currentUserRole: currentUserRoleSubject.asObservable(),
@@ -23,7 +24,7 @@ function login(email, password) {
     };
 
     return fetch(EDzControlLogin, requestOptions)
-        .then(handleResponse)
+        .then(handleLoginResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             sessionStorage.setItem('currentUser', JSON.stringify(user));
@@ -31,6 +32,17 @@ function login(email, password) {
             currentUserSubject.next(user);
             return user;
         });
+}
+
+function register (email, password){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({email, password })
+    };
+    
+    return fetch(EDzControlRegister, requestOptions)
+        .then(handleRegisterResponse)
 }
 
 function logout() {

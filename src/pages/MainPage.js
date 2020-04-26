@@ -19,9 +19,10 @@ const MainPage = ()  => {
 
     useEffect(() => {
       setRoutes(RoutesService(authenticationService.currentUserRoleValue))
-    });
+    }, []);
 
       function renderRoutes() {
+        // setRoutes(RoutesService(authenticationService.currentUserRoleValue))
          return routes.map(route => {
           const routeKey = `${route.key} ${route.title}`;
           return <PrivateRoute exact key={routeKey} path={route.link} component={route.component}/>;
@@ -29,7 +30,7 @@ const MainPage = ()  => {
       }
 
       function renderMenuItems() {
-      
+        // setRoutes(RoutesService(authenticationService.currentUserRoleValue))
       return routes.map(route => {
           return (
             <Nav className="mr-auto" navbar>

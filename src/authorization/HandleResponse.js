@@ -1,6 +1,6 @@
 import { authenticationService } from './Authentication';
 
-export function handleResponse(response) {
+export function handleLoginResponse(response) {
     return response.text()
     .then(text => {
         const data = text && JSON.parse(text);
@@ -14,6 +14,21 @@ export function handleResponse(response) {
             return Promise.reject(error);
         }
 
+        return data;
+    });
+}
+
+export function handleRegisterResponse(response) {
+    return response.text()
+    .then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            if ([401, 403].indexOf(response.status) !== -1) {
+                console.log('Register failed')
+            }
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
         return data;
     });
 }

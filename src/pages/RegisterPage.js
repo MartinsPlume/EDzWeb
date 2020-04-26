@@ -16,13 +16,24 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useCallback } from "react";
+
+// import dependencies
+import { authenticationService } from "../authorization/Authentication";
 
 // reactstrap components
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import {
+  Alert, 
+  Button, 
+  Card, 
+  Form, 
+  Input, 
+  Container, 
+  Row, 
+  Col } from "reactstrap";
 
 // core components
-function RegisterPage() {
+const RegisterPage = ({history}) => {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
     document.body.classList.add("register-page");
@@ -30,26 +41,85 @@ function RegisterPage() {
       document.body.classList.remove("register-page");
     };
   });
+
+const handleRegister = useCallback(
+    async event => {
+        event.preventDefault();
+        const { email, password } = event.target.elements;
+        try {
+        await authenticationService.register(email.value, password.value);
+        setAlertSuccess(true)
+        setTimeout(redirect,2000)
+        } catch (error) {
+        setAlertWarning(true)
+        }
+  },
+  [history]
+  );
+
+  function redirect(){
+    history.push("/login");
+  }
+
+  const [alertSuccess, setAlertSuccess] = React.useState(false);
+  const [alertWarning, setAlertWarning] = React.useState(false);
+
   return (
     <>
+    <div>
+    <Alert color="success" isOpen={alertSuccess}>
+          <Container>
+            <button
+              type="button"
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setAlertSuccess(false)}
+            >
+              <i className="nc-icon nc-simple-remove" />
+            </button>
+            <span>Registering . . .</span>
+          </Container>
+        </Alert>
+
+        <Alert color="warning" isOpen={alertWarning}>
+          <Container>
+            <button
+              type="button"
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setAlertWarning(false)}
+            >
+              <i className="nc-icon nc-simple-remove" />
+            </button>
+            <span>Registration failed</span>
+          </Container>
+        </Alert>
+    </div>
       <div
         className="page-header"
         style={{
           backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
         }}
       >
+        
+
         <div className="filter" />
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
                 <h3 className="title mx-auto">Welcome</h3>
-                <Form className="register-form">
+                <Form onSubmit={handleRegister} className="register-form">
                   <label>Email</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input name="email" placeholder="Email" type="text" />
                   <label>Password</label>
-                  <Input placeholder="Password" type="password" />
-                  <Button block className="btn-round" color="danger">
+                  <Input name="password" placeholder="Password" type="password" />
+                  <Button
+                  block className="btn-round"
+                  color="danger"
+                  type="submit">
                     Register
                   </Button>
                 </Form>

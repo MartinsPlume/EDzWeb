@@ -66,7 +66,6 @@ class NavigationBar extends Component {
                                 <Button
                                 onClick = {this.handleLogout}
                                     className="btn-round mr-1"
-                                    outline
                                     color="warning"
                                     type="button"
                                 >
