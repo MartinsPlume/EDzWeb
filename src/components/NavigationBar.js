@@ -48,6 +48,25 @@ class NavigationBar extends Component {
     handleLogout(){
         authenticationService.logout()
     }
+
+    renderLogoutButton(){
+            return(
+            <NavLink href={'/login'}>
+                <Button
+                onClick = {this.handleLogout}
+                    className="btn-round mr-1"
+                    color="warning"
+                    type="button"
+                >
+                    <i
+                            aria-hidden={false}
+                            className='nc-icon nc-button-power'
+                            />
+                    {LogOffText}
+                </Button>
+            </NavLink>
+            )
+        }
     
     render(){
         return (
@@ -62,20 +81,9 @@ class NavigationBar extends Component {
                 <Container>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
-                            <NavLink href={'/login'}>
-                                <Button
-                                onClick = {this.handleLogout}
-                                    className="btn-round mr-1"
-                                    color="warning"
-                                    type="button"
-                                >
-                                    <i
-                                            aria-hidden={false}
-                                            className='nc-icon nc-button-power'
-                                            />
-                                    {LogOffText}
-                                </Button>
-                            </NavLink>
+                            
+                                {this.renderLogoutButton()}
+                            
                         </NavItem>
                     </Nav>
                 </Container>

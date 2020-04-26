@@ -53,8 +53,8 @@ function StudentHome() {
           <div className="filter" />
           <Container>
             <div className="motto text-center">
-              <h1>Example page</h1>
-              <h3>Start designing your landing page here.</h3>
+              <h1>EDz Education</h1>
+                <h3>Student</h3>
               <br />
               <Button
                 href="https://www.youtube.com/watch?v=wrOM4zJcJjM&t="

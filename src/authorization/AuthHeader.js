@@ -1,6 +1,6 @@
 import { authenticationService } from './Authentication';
 
-export function authHeader() {
+export default function authHeader() {
     // return authorization header with jwt token
 
     const currentUser = JSON.stringify(authenticationService.currentUserValue)
