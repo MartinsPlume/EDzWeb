@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-import { EDzControlLogin,EDzControlRegister} from './JWTConfig';
+import { EDzControlLogin,EDzControlRegister} from './Contracts';
 import { handleLoginResponse, handleRegisterResponse } from './HandleResponse';
 import jwt_decode from 'jwt-decode'
 

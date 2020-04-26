@@ -49,7 +49,7 @@ const handleRegister = useCallback(
         try {
         await authenticationService.register(email.value, password.value);
         setAlertSuccess(true)
-        setTimeout(redirect,2000)
+        setTimeout(redirect(),2000)
         } catch (error) {
         setAlertWarning(true)
         }

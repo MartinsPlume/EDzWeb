@@ -1,10 +1,10 @@
 import React from 'react'
-import { authenticationService } from 'authorization/Authentication'
+import ExerciseSwitch from './ExerciseSwitch'
 
 const Exercises = () => {
     return (
         <div>
-            {authenticationService.currentUserRoleValue}
+            <ExerciseSwitch/>
         </div>
     )
 }

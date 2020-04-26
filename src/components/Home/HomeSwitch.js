@@ -1,6 +1,7 @@
 import React from 'react'
-import { authenticationService } from 'authorization/Authentication';
 import StudentHome from './StudentHome'
+import TeacherHome from './TeacherHome'
+import ErrorComponent from '../ErrorComponent'
 
 const HomeSwitch = ({}) => {
 
@@ -12,16 +13,20 @@ const HomeSwitch = ({}) => {
         case 'Student':
             Output = (
                 <>
-                    <StudentHome
-                    userRole={userRole}/>
+                    <StudentHome/>
                 </>
             )
             break;
+        case 'Teacher':
+        Output = (
+            <>
+                <TeacherHome/>
+            </>
+        )
+        break;
         default:
             Output = (
-                <>
-                User role is {userRole}
-                </>
+                <ErrorComponent/>
             )
     }
     return Output
