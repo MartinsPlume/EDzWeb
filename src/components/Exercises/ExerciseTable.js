@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import MaterialTable from 'material-table';
-import authHeader from '../../authorization/AuthHeader'
+import {AuthHeader} from '../../authorization/AuthHeader'
 import {exercises} from '../../authorization/Contracts'
-import { Button } from 'reactstrap';
 export class ExerciseTable extends Component {
 
     constructor(props) {
@@ -13,7 +12,6 @@ export class ExerciseTable extends Component {
           columns: [
             { title: 'Id', field: 'exerciseId', type: 'numeric' },
             { title: 'Name', field: 'exerciseName' },
-            { title: 'Code', field: 'exerciseCode' },
             { title: 'Description', field: 'shortDescription'}
           ]
           }
@@ -27,7 +25,7 @@ export class ExerciseTable extends Component {
 
         const requestOptions = {
             method: 'GET',
-            headers: authHeader()
+            headers: AuthHeader.authHeader()
         };
 
         // Where we're fetching data from
@@ -52,13 +50,12 @@ export class ExerciseTable extends Component {
         const state = this.state;
         const { exercises } = state;
         return exercises.map((exercise) => {
-            const {exerciseId ,exerciseName, exerciseCode, shortDescription } = exercise //destructuring
+            const {exerciseId ,exerciseName, shortDescription } = exercise //destructuring
             return (
                {
                 exerciseId: exerciseId,
                 exerciseName: exerciseName, 
-                exerciseCode: exerciseCode,
-                ShortDescription: shortDescription
+                shortDescription: shortDescription
                 }
             )
          })
@@ -77,19 +74,30 @@ export class ExerciseTable extends Component {
             actions = {[{
                 icon: 'edit',
                 tooltip: 'Edit exercise',
-                onClick: (event, rowData) => alert('You pressed ' + rowData.id)
-            }]}
-            editable={{
-              onRowAdd: newData =>
-              new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    {
-                      console.log(newData)
-                    }
-                    resolve()
-                  }, 1000)
-                })
-              }}
+                onClick: (event, rowData) => alert('You pressed ' + rowData.exerciseName)
+            },
+            {
+              icon: 'add',
+              tooltip: 'Add User',
+              isFreeAction: true,
+              onClick: (event, rowData) => alert("You want to add a new row")
+            }
+          ]}
+            // editable={{
+            //   onRowAdd: newData => {
+            //     new Promise()
+
+            //     var headers = new Headers()
+            //     headers.append('Authorization', AuthHeader.authHeaderOnlyToken())
+            //     headers.append('content-type', 'application/json')
+
+            //     fetch(exercises, {
+            //       method: 'POST',
+            //       headers: headers,
+            //       body: JSON.stringify(newData.exerciseName,newData.exerciseCode, newData.shortDescription)
+            //     })
+            //   }
+            //   }}
             />
             </div>
         )

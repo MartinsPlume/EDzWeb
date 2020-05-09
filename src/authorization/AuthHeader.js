@@ -1,12 +1,25 @@
 import { authenticationService } from './Authentication';
 
-export default function authHeader() {
+export const AuthHeader = {
+    authHeader,
+    authHeaderOnlyToken
+};
+
+function authHeader() {
     // return authorization header with jwt token
+    let currentUserToken = authenticationService.currentUserValue.accessToken
+    if (currentUserToken) {
+        return { Authorization: `Bearer ${currentUserToken}` };
+    } else {
+        return {};
+    }
+}
 
-    const currentUser = JSON.stringify(authenticationService.currentUserValue)
-
-    if (currentUser) {
-        return { Authorization: `Bearer ${JSON.parse(currentUser).accessToken}` };
+function authHeaderOnlyToken() {
+    // return authorization header with jwt token
+    let currentUserToken = authenticationService.currentUserValue.accessToken
+    if (currentUserToken) {
+        return ('Bearer ' + currentUserToken) ;
     } else {
         return {};
     }
