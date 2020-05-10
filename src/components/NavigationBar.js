@@ -33,7 +33,7 @@ import {
   } from "reactstrap";
 
   //
-  import {LogOffText} from '../res/strings'
+  import {Strings} from '../res/Strings'
 
 class NavigationBar extends Component {
 
@@ -62,7 +62,7 @@ class NavigationBar extends Component {
                             aria-hidden={false}
                             className='nc-icon nc-button-power'
                             />
-                    {LogOffText}
+                    {Strings.LogOffText}
                 </Button>
             </NavLink>
             )

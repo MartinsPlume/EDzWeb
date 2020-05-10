@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-import { EDzControlLogin,EDzControlRegister} from './Contracts';
+import {WebApiRequests} from './Contracts';
 import { handleLoginResponse, handleRegisterResponse } from './HandleResponse';
 import jwt_decode from 'jwt-decode'
 
@@ -23,7 +23,9 @@ function login(email, password) {
         body: JSON.stringify({email, password })
     };
 
-    return fetch(EDzControlLogin, requestOptions)
+    return fetch(
+        WebApiRequests.EDzControlLogin,
+        requestOptions)
         .then(handleLoginResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -40,7 +42,9 @@ function register (email, password){
         body: JSON.stringify({email, password })
     };
     
-    return fetch(EDzControlRegister, requestOptions)
+    return fetch(
+        WebApiRequests.EDzControlRegister,
+        requestOptions)
         .then(handleRegisterResponse)
 }
 
