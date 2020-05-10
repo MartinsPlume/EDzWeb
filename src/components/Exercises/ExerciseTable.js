@@ -2,24 +2,23 @@ import React from 'react'
 
 // import dependencies
 import MaterialTable from 'material-table';
-import {AuthHeader} from '../../authorization/AuthHeader'
-import {WebApiRequests} from '../../authorization/Contracts'
+
 
 // import resources
 
 import {ActionSwitchStrings, Strings, ModalStatusStrings} from '../../res/Strings'
 
-const ExerciseTable = ({sendHandleChoice, tableMessage}) => {
+const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
 
-  const [exercises, setExercises] = React.useState([])
   const [columns] = React.useState([
       { title: 'Id', field: 'exerciseId', type: 'numeric' },
       { title: 'Name', field: 'exerciseName' },
       { title: 'Description', field: 'shortDescription'}
     ])
+  const [tableStatus, setTableStatus] = React.useState(tableMessage)
 
   React.useEffect(() =>{
-    fetchExercises()
+    setTableStatus(tableMessage)
   },[])
 
   function handleEdit (rowData) {
@@ -27,21 +26,6 @@ const ExerciseTable = ({sendHandleChoice, tableMessage}) => {
         ActionSwitchStrings.ActionSwitchEditExercise,
          exercises.find(
            exercise => exercise.exerciseId === rowData.exerciseId))
-    }
-
-  function fetchExercises (){
-      const requestOptions = {
-          method: 'GET',
-          headers: AuthHeader.authHeader()
-      };
-
-      fetch(
-        WebApiRequests.EDzControlExercises,
-        requestOptions)
-        .then(response => response.json())
-        .then(data => {setExercises(data)
-        })
-        .catch(error => console.log({ error, isLoading: false }));
     }
 
   function renderTableData(){
