@@ -37,7 +37,6 @@ function TeacherExercise() {
     }
 
     function setTableModal(message){
-        console.log("The message is " + message)
         setTableMessage(message)
     }
 

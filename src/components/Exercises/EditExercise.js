@@ -20,7 +20,7 @@ import {
 
 const EditExercise = ({sendCloseExercise, editExercise, setTableMessage}) => {
 
-    const [exercise, setExercise] = React.useState(editExercise)
+    const [exercise] = React.useState(editExercise)
     const [exerciseName, SetexerciseName] = React.useState(editExercise.exerciseName)
     const [exerciseShortDescription, SetExerciseShortDescription] = React.useState(editExercise.shortDescription)
     const [exerciseDescription, SetExerciseDescription] = React.useState(editExercise.Description)
@@ -46,7 +46,6 @@ const EditExercise = ({sendCloseExercise, editExercise, setTableMessage}) => {
     
     const handleDelete = async (e) => {
         e.preventDefault()
-        console.log(e)
 
         const requestOptions = {
             method: 'DELETE',

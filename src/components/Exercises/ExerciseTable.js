@@ -3,10 +3,9 @@ import React from 'react'
 // import dependencies
 import MaterialTable from 'material-table';
 
-
 // import resources
 
-import {ActionSwitchStrings, Strings, ModalStatusStrings} from '../../res/Strings'
+import {ActionSwitchStrings} from '../../res/Strings'
 
 const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
 
