@@ -15,11 +15,6 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
       { title: 'Name', field: 'exerciseName' },
       { title: 'Description', field: 'shortDescription'}
     ])
-  const [tableStatus, setTableStatus] = React.useState(tableMessage)
-
-  React.useEffect(() =>{
-    setTableStatus(tableMessage)
-  },[])
 
   function handleEdit (rowData) {
       sendHandleChoice(
