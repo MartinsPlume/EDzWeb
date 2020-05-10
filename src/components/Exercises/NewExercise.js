@@ -91,7 +91,7 @@ const NewExercise = ({sendCloseExercise, setTableMessage}) => {
                             >
                         <i
                             aria-hidden={false}
-                            className='nc-icon nc-button-power'
+                            className='nc-icon nc-simple-remove'
                             />
                             {Strings.CloseTextWithSpaceForIcon}
                         </Button>
