@@ -40,6 +40,17 @@ export const Strings = {
     ExerciseDescriptionHint
 }
 
+//UserRole switch strings
+const UserStudent = 'Student'
+const UserTeacher = 'Teacher'
+const UserAdministrator = 'Administrator'
+
+export const UserRoleStrings = {
+    UserStudent,
+    UserTeacher,
+    UserAdministrator
+}
+
 // ExerciseActionSwitch strings
 const ActionSwitchNewExercise = 'NewExercise'
 const ActionSwitchEditExercise = 'EditExercise'

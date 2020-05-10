@@ -3,6 +3,9 @@ import StudentExercise from './StudentExercise'
 import TeacherExercise from './TeacherExercise'
 import ErrorComponent from '../ErrorComponent'
 
+// import resources
+import {UserRoleStrings} from '../../res/Strings'
+
 const ExerciseSwitch = () => {
 
         let Output;
@@ -10,19 +13,17 @@ const ExerciseSwitch = () => {
     
     switch (userRole)
     {
-        case 'Student':
+        case UserRoleStrings.UserStudent:
             Output = (
                 <>
-                    <StudentExercise
-                    userRole={userRole}/>
+                    <StudentExercise/>
                 </>
             )
             break;
-        case 'Teacher':
+        case UserRoleStrings.UserTeacher:
             Output = (
                 <>
-                    <TeacherExercise
-                    userRole={userRole}/>
+                    <TeacherExercise/>
                 </>
             )
             break;
