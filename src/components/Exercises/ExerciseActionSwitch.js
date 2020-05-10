@@ -2,27 +2,44 @@ import React from 'react'
 import NewExercise from './NewExercise'
 import EditExercise from './EditExercise'
 
-const ExerciseActionSwitch = (type,exercise,SendEditSaveDeleteHappened) => {
+// import resources
+import {ActionSwitchStrings} from '../../res/Strings'
+
+const ExerciseActionSwitch = ({
+    type,
+    sendEditSaveDeleteHappened,
+    editExercise,
+    setTableMessage}) => 
+    {
 
     let Output;
     switch (type)
     {
-        case 'new':
+        case ActionSwitchStrings.ActionSwitchNewExercise:
             Output = (
                 <>
                     <NewExercise 
-                    SendCloseExerciseSwitch={SendEditSaveDeleteHappened}
+                    sendCloseExercise={sendEditSaveDeleteHappened}
+                    setTableMessage={setTableMessage}
                     />
                 </>
             )
             break;
-        case 'edit':
+        case ActionSwitchStrings.ActionSwitchEditExercise:
             Output = (
                 <>
                     <EditExercise
-                    editExercise={exercise}
-                    SendCloseExerciseSwitch={SendEditSaveDeleteHappened}
+                    editExercise={editExercise}
+                    sendCloseExercise={sendEditSaveDeleteHappened}
+                    setTableMessage={setTableMessage}
                     />
+                </>
+            )
+            break;
+
+        case ActionSwitchStrings.ActionSwitchIdle:
+            Output = (
+                <>
                 </>
             )
             break;
