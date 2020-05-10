@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 // import dependencies
 import MaterialTable from 'material-table';
@@ -9,106 +9,83 @@ import {WebApiRequests} from '../../authorization/Contracts'
 
 import {ActionSwitchStrings, Strings, ModalStatusStrings} from '../../res/Strings'
 
-// reactstrap components
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button
-} from "reactstrap";
+const ExerciseTable = ({sendHandleChoice, tableMessage}) => {
 
+  const [exercises, setExercises] = React.useState([])
+  const [columns] = React.useState([
+      { title: 'Id', field: 'exerciseId', type: 'numeric' },
+      { title: 'Name', field: 'exerciseName' },
+      { title: 'Description', field: 'shortDescription'}
+    ])
 
-export class ExerciseTable extends Component {
+  React.useEffect(() =>{
+    fetchExercises()
+  },[])
 
-    constructor(props) {
-        super(props)
-      
-        this.state = {
-          exercises: [],
-          columns: [
-            { title: 'Id', field: 'exerciseId', type: 'numeric' },
-            { title: 'Name', field: 'exerciseName' },
-            { title: 'Description', field: 'shortDescription'}
-          ]
-          }
-        }
-
-    componentDidMount(){
-        this.fetchExercises()
-    }
-
-    handleEdit(rowData){
-      this.props.sendHandleChoice(
+  function handleEdit (rowData) {
+      sendHandleChoice(
         ActionSwitchStrings.ActionSwitchEditExercise,
-         this.state.exercises.find(
+         exercises.find(
            exercise => exercise.exerciseId === rowData.exerciseId))
     }
 
-    fetchExercises() {
-        const requestOptions = {
-            method: 'GET',
-            headers: AuthHeader.authHeader()
-        };
+  function fetchExercises (){
+      const requestOptions = {
+          method: 'GET',
+          headers: AuthHeader.authHeader()
+      };
 
-        fetch(
-          WebApiRequests.EDzControlExercises,
-          requestOptions)
-          .then(response => response.json())
-          .then(data => {
-            this.setState({
-                exercises: data
-            })
-          })
-          .catch(error => this.setState({ error, isLoading: false }));
-      }
-
-      renderTableData(){
-        const state = this.state;
-        const { exercises } = state;
-        return exercises.map((exercise) => {
-            const {exerciseId ,exerciseName, shortDescription } = exercise //destructuring
-            return (
-               {
-                exerciseId: exerciseId,
-                exerciseName: exerciseName, 
-                shortDescription: shortDescription
-                }
-            )
-         })
-       }
-
-    render() {
-        return (
-            <div>
-              <div>
-                <MaterialTable
-                title="Exercise table"
-                columns={this.state.columns}
-                data={this.renderTableData()}        
-                options={{
-                  search: true
-                }}
-                actions = {[{
-                      icon: 'edit',
-                      tooltip: 'Edit exercise',
-                      onClick: (event, rowData) =>
-                      this.handleEdit(rowData)
-                  },
-                  {
-                    icon: 'add',
-                    tooltip: 'Add exercise',
-                    isFreeAction: true,
-                    onClick: (event) =>
-                    this.props.sendHandleChoice(ActionSwitchStrings.ActionSwitchNewExercise,null)
-                  }
-                  ]}
-                />
-              </div>
-              
-            </div>
-        )
+      fetch(
+        WebApiRequests.EDzControlExercises,
+        requestOptions)
+        .then(response => response.json())
+        .then(data => {setExercises(data)
+        })
+        .catch(error => console.log({ error, isLoading: false }));
     }
+
+  function renderTableData(){
+    return exercises.map((exercise) => {
+        const {exerciseId ,exerciseName, shortDescription } = exercise //destructuring
+        return (
+            {
+            exerciseId: exerciseId,
+            exerciseName: exerciseName, 
+            shortDescription: shortDescription
+            }
+        )
+      })
+    }
+
+  return (
+      <div>
+        <div>
+          <MaterialTable
+          title="Exercise table"
+          columns={columns}
+          data={renderTableData()}        
+          options={{
+            search: true
+          }}
+          actions = {[{
+                icon: 'edit',
+                tooltip: 'Edit exercise',
+                onClick: (event, rowData) =>
+                handleEdit(rowData)
+            },
+            {
+              icon: 'add',
+              tooltip: 'Add exercise',
+              isFreeAction: true,
+              onClick: (event) =>
+              sendHandleChoice(ActionSwitchStrings.ActionSwitchNewExercise,null)
+            }
+            ]}
+          />
+        </div>
+        
+      </div>
+  )
 }
 
 export default ExerciseTable
