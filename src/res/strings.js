@@ -12,6 +12,9 @@ const DeleteText = 'Delete'
 const ShortDescriptionText = 'Short description of Your exercise'
 const DescriptionText = 'Full description of the exercise'
 const OkText = 'Ok!'
+const AssignmentText = 'Assignment'
+const UserEmailText = 'User'
+const ShortInstructionText = 'Short instructions for the assignment'
 
 // Hint strings
 const ExerciseTextHint = 'Enter the name of Your exercise'
@@ -33,6 +36,9 @@ export const Strings = {
     ShortDescriptionText,
     DescriptionText,
     OkText,
+    AssignmentText,
+	UserEmailText,
+	ShortInstructionText,
 
     // Export hints
     ExerciseTextHint,
@@ -52,13 +58,13 @@ export const UserRoleStrings = {
 }
 
 // ExerciseActionSwitch strings
-const ActionSwitchNewExercise = 'NewExercise'
-const ActionSwitchEditExercise = 'EditExercise'
+const ActionSwitchNew = 'New'
+const ActionSwitchEdit = 'Edit'
 const ActionSwitchIdle = 'Idle'
 
 export const ActionSwitchStrings = {
-    ActionSwitchNewExercise,
-    ActionSwitchEditExercise,
+    ActionSwitchNew,
+    ActionSwitchEdit,
     ActionSwitchIdle
 }
 
@@ -71,6 +77,17 @@ export const ExerciseChangeSwitchStrings = {
     ExerciseName,
     ShortDescription,
     Description
+}
+
+// Assignment Handle change switch strings
+const UserEmail = 'UserEmail'
+const ShortInstruction = 'ShortInstruction'
+const AssignmentExercise = 'AssignmentExercise'
+
+export const AssignmentChangeSwitchStrings = {
+    UserEmail,
+    ShortInstruction,
+    AssignmentExercise
 }
 
 // Modal status
