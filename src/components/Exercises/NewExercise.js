@@ -18,7 +18,7 @@ import {
     Input
   } from "reactstrap";
 
-const NewExercise = ({sendCloseExercise, setTableMessage}) => {
+const NewExercise = ({sendClose, setTableMessage}) => {
 
     const [exerciseName, SetexerciseName] = React.useState()
     const [exerciseShortDescription, SetExerciseShortDescription] = React.useState()
@@ -63,7 +63,7 @@ const NewExercise = ({sendCloseExercise, setTableMessage}) => {
             requestOptions)
             .then(response => setTableMessage(ModalStatusStrings.ModalAdded));
         
-        sendCloseExercise()
+        sendClose()
     }
     
     return (
@@ -84,7 +84,7 @@ const NewExercise = ({sendCloseExercise, setTableMessage}) => {
                     </Col>
                     <Col className="form-row ">
                         <Button
-                            onClick= {(e) => sendCloseExercise()}
+                            onClick= {(e) => sendClose()}
                             className="btn btn-round mr-1"
                             color="warning"
                             type="button"

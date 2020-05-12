@@ -57,7 +57,7 @@ export const UserRoleStrings = {
     UserAdministrator
 }
 
-// ExerciseActionSwitch strings
+// ActionSwitch strings
 const ActionSwitchNew = 'New'
 const ActionSwitchEdit = 'Edit'
 const ActionSwitchIdle = 'Idle'

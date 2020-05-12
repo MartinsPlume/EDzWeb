@@ -18,7 +18,7 @@ import {
     Input
   } from "reactstrap";
 
-const EditExercise = ({sendCloseExercise, editExercise, setTableMessage}) => {
+const EditExercise = ({sendClose, editExercise, setTableMessage}) => {
 
     const [exercise] = React.useState(editExercise)
     const [exerciseName, SetexerciseName] = React.useState(editExercise.exerciseName)
@@ -58,7 +58,7 @@ const EditExercise = ({sendCloseExercise, editExercise, setTableMessage}) => {
             requestOptions)
             .then(response => setTableMessage(ModalStatusStrings.Deleted)
             )
-        sendCloseExercise()
+        sendClose()
     }
 
     const addEdit = async (e) => {
@@ -82,7 +82,7 @@ const EditExercise = ({sendCloseExercise, editExercise, setTableMessage}) => {
             WebApiRequests.EDzControlExercises + '/' + exercise.exerciseId,
             requestOptions)
             .then(setTableMessage(ModalStatusStrings.Updated))
-        sendCloseExercise()
+        sendClose()
     }
     
     return (
@@ -103,7 +103,7 @@ const EditExercise = ({sendCloseExercise, editExercise, setTableMessage}) => {
                     </Col>
                     <Col className="form-row ">
                         <Button
-                            onClick= {(e) => sendCloseExercise()}
+                            onClick= {(e) => sendClose()}
                             className="btn btn-round mr-1"
                             color="warning"
                             type="button"

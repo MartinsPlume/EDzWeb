@@ -17,7 +17,7 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
 
   function handleEdit (rowData) {
       sendHandleChoice(
-        ActionSwitchStrings.ActionSwitchEditExercise,
+        ActionSwitchStrings.ActionSwitchEdit,
          exercises.find(
            exercise => exercise.exerciseId === rowData.exerciseId))
     }
@@ -56,7 +56,7 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
               tooltip: 'Add exercise',
               isFreeAction: true,
               onClick: (event) =>
-              sendHandleChoice(ActionSwitchStrings.ActionSwitchNewExercise,null)
+              sendHandleChoice(ActionSwitchStrings.ActionSwitchNew,null)
             }
             ]}
           />

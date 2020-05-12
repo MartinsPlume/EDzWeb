@@ -58,7 +58,7 @@ function TeacherExercise() {
         <div>
             <ExerciseActionSwitch
             type = {exerciseSwitchProperty}
-            sendEditSaveDeleteHappened={setExerciseSwitchIdle}
+            sendClose={setExerciseSwitchIdle}
             editExercise = {exercise}
             setTableMessage={setTableModal}
             />

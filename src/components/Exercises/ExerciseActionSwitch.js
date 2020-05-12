@@ -7,7 +7,7 @@ import {ActionSwitchStrings} from '../../res/Strings'
 
 const ExerciseActionSwitch = ({
     type,
-    sendEditSaveDeleteHappened,
+    sendClose,
     editExercise,
     setTableMessage}) => 
     {
@@ -15,22 +15,22 @@ const ExerciseActionSwitch = ({
     let Output;
     switch (type)
     {
-        case ActionSwitchStrings.New:
+        case ActionSwitchStrings.ActionSwitchNew:
             Output = (
                 <>
                     <NewExercise 
-                    sendCloseExercise={sendEditSaveDeleteHappened}
+                    sendClose={sendClose}
                     setTableMessage={setTableMessage}
                     />
                 </>
             )
             break;
-        case ActionSwitchStrings.Edit:
+        case ActionSwitchStrings.ActionSwitchEdit:
             Output = (
                 <>
                     <EditExercise
                     editExercise={editExercise}
-                    sendCloseExercise={sendEditSaveDeleteHappened}
+                    sendClose={sendClose}
                     setTableMessage={setTableMessage}
                     />
                 </>
