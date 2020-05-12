@@ -15,7 +15,7 @@ const ExerciseActionSwitch = ({
     let Output;
     switch (type)
     {
-        case ActionSwitchStrings.ActionSwitchNewExercise:
+        case ActionSwitchStrings.New:
             Output = (
                 <>
                     <NewExercise 
@@ -25,7 +25,7 @@ const ExerciseActionSwitch = ({
                 </>
             )
             break;
-        case ActionSwitchStrings.ActionSwitchEditExercise:
+        case ActionSwitchStrings.Edit:
             Output = (
                 <>
                     <EditExercise

@@ -26,15 +26,15 @@ const NewExercise = ({sendCloseExercise, setTableMessage}) => {
 
     const handleChange = (e) => {
         switch(e.target.id){
-            case 'ExerciseName':
+            case ExerciseChangeSwitchStrings.ExerciseName:
                 SetexerciseName(e.target.value)
                 break;
 
-            case 'ShortDescription':
+            case ExerciseChangeSwitchStrings.ShortDescription:
                 SetExerciseShortDescription(e.target.value)
                 break;
 
-            case 'Description':
+            case ExerciseChangeSwitchStrings.Description:
                 SetExerciseDescription(e.target.value)
                 break;
             

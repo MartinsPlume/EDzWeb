@@ -10,7 +10,6 @@ import {WebApiRequests} from '../../authorization/Contracts'
 import {ActionSwitchStrings, ModalStatusStrings} from '../../res/Strings'
 
 function TeacherExercise() {
-
     const [exercise,setExercise] = React.useState()
     const [exercises, setExercises] = React.useState([])
     const [exerciseSwitchProperty,setExerciseSwitchProperty] = React.useState('idle')
