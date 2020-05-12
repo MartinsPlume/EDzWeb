@@ -28,8 +28,6 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
     const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName)) 
     const [emails] = React.useState(students.map(student => student.email))
     
-    console.log()
-
     function renderEmails(){
         return emails.map(email => {
             return <option key={email}>{email}</option>

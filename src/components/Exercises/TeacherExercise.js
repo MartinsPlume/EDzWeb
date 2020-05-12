@@ -31,7 +31,7 @@ function TeacherExercise() {
     }
     
     function setExerciseSwitchIdle(){
-        setExerciseSwitchProperty(ActionSwitchStrings.Idle)
+        setExerciseSwitchProperty(ActionSwitchStrings.ActionSwitchIdle)
         fetchExercises()
     }
 

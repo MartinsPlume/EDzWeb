@@ -36,7 +36,7 @@ function TeacherAssignment() {
     }
 
     function setAssignmentSwitchIdle(){
-        setAssignmentSwitchProperty(ActionSwitchStrings.Idle)
+        setAssignmentSwitchProperty(ActionSwitchStrings.ActionSwitchIdle)
         fetchAssignments()
     }
 

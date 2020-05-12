@@ -15,6 +15,7 @@ const OkText = 'Ok!'
 const AssignmentText = 'Assignment'
 const UserEmailText = 'User'
 const ShortInstructionText = 'Short instructions for the assignment'
+const BackText = 'Return back'
 
 // Hint strings
 const ExerciseTextHint = 'Enter the name of Your exercise'
@@ -38,7 +39,8 @@ export const Strings = {
     OkText,
     AssignmentText,
 	UserEmailText,
-	ShortInstructionText,
+    ShortInstructionText,
+    BackText,
 
     // Export hints
     ExerciseTextHint,
@@ -60,11 +62,13 @@ export const UserRoleStrings = {
 // ActionSwitch strings
 const ActionSwitchNew = 'New'
 const ActionSwitchEdit = 'Edit'
+const ActionSwitchView = 'View'
 const ActionSwitchIdle = 'Idle'
 
 export const ActionSwitchStrings = {
     ActionSwitchNew,
     ActionSwitchEdit,
+    ActionSwitchView,
     ActionSwitchIdle
 }
 
