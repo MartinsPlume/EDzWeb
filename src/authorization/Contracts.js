@@ -5,9 +5,16 @@ const EDzControlRegister="https://localhost:5001/api/v1/Users"
 // Exercises
 const EDzControlExercises = 'https://localhost:5001/api/Exercises'
 
+// TeacherAssignments
+const EDzControlTeacherAssignments = 'https://localhost:5001/api/TeacherAssignment'
+
+// Get students
+const EDzControlGetStudents = 'https://localhost:5001/api/v1/students'
 
 export const WebApiRequests = {
     EDzControlLogin,
     EDzControlRegister,
-    EDzControlExercises
+    EDzControlExercises,
+    EDzControlTeacherAssignments,
+    EDzControlGetStudents
 }
