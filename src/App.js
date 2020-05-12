@@ -9,6 +9,7 @@ import {authenticationService} from './authorization/Authentication'
 
 import Home from 'components/Home/Home'
 import Exercises from 'components/Exercises/Exercises'
+import Assignments from 'components/Assignments/Assignments';
 
 // import pages
 import LoginPage from 'pages/LoginPage';
@@ -38,6 +39,13 @@ export class App extends Component {
           link: '/exercises',
           icon: 'nc-icon nc-tile-56',
           component: Exercises
+        },
+        {
+          title: ' Assignments',
+          key: 'Assignments',
+          link: '/assignments',
+          icon: 'nc-icon nc-bullet-list-67',
+          component: Assignments
         }
       ],
       currentRole : authenticationService.currentUserRoleValue
