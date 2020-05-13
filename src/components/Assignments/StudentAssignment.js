@@ -21,12 +21,12 @@ function StudentAssignment() {
         fetchExercises()
       },[])
 
-    function handleChoice(choice, exerciseId){
+    function handleChoice(choice, id){
 
         if (assignmentSwitchProperty !== choice) {
             setAssignmentSwitchProperty(choice)
             setExercise(exercises.find(
-                exercise => exercise.exerciseId === exerciseId
+                exercise => exercise.id === id
             ))
         }
         else {
