@@ -3,12 +3,10 @@ import React from 'react'
 // import dependencies
 import {AuthHeader} from '../../authorization/AuthHeader'
 import {WebApiRequests} from '../../authorization/Contracts'
+import AssignmentListSwitch from './AssignmentListSwitch'
 
 // import resources
 import {ActionSwitchStrings} from '../../res/Strings'
-import AssignmentListSwitch from './AssignmentListSwitch'
-
-import AssignmentList from './AssignmentList'
 
 function StudentAssignment() {
 

@@ -93,7 +93,7 @@ const EditExercise = ({sendClose, editExercise, setTableMessage}) => {
                         <h1>
                         <i
                             aria-hidden={false}
-                            className='nc-icon nc-simple-remove'
+                            className='nc-icon nc-paper'
                             />
                             {Strings.EditTextWithSpaceForIcon}
                         </h1>

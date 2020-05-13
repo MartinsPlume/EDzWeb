@@ -7,7 +7,7 @@ import {
     ListGroupItem,
   } from "reactstrap";
 
-import {ActionSwitchStrings, Strings} from '../../res/Strings'
+import {Strings} from '../../res/Strings'
 
 const AssignmentExercise = ({exercise, sendClose}) => {
 

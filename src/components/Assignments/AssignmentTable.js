@@ -7,7 +7,7 @@ import MaterialTable from 'material-table';
 
 import {ActionSwitchStrings} from '../../res/Strings'
 
-const AssignmentTable = ({assignments,sendHandleChoice, tableMessage}) => {
+const AssignmentTable = ({assignments, sendHandleChoice, tableMessage}) => {
 
   const [columns] = React.useState([
       { title: 'Id', field: 'id', type: 'numeric' },
@@ -28,7 +28,7 @@ const AssignmentTable = ({assignments,sendHandleChoice, tableMessage}) => {
         return (
             {
             id: id,
-            userEmail: userEmail, 
+            userEmail: userEmail,
             shortInstruction: shortInstruction
             }
         )

@@ -10,7 +10,7 @@ import {ActionSwitchStrings} from '../../res/Strings'
 const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
 
   const [columns] = React.useState([
-      { title: 'Id', field: 'exerciseId', type: 'numeric' },
+      { title: 'Id', field: 'id', type: 'numeric' },
       { title: 'Name', field: 'exerciseName' },
       { title: 'Description', field: 'shortDescription'}
     ])
@@ -19,15 +19,15 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
       sendHandleChoice(
         ActionSwitchStrings.ActionSwitchEdit,
          exercises.find(
-           exercise => exercise.exerciseId === rowData.exerciseId))
+           exercise => exercise.id === rowData.id))
     }
 
   function renderTableData(){
     return exercises.map((exercise) => {
-        const {exerciseId ,exerciseName, shortDescription } = exercise //destructuring
+        const {id ,exerciseName, shortDescription } = exercise //destructuring
         return (
             {
-            exerciseId: exerciseId,
+            id: id,
             exerciseName: exerciseName, 
             shortDescription: shortDescription
             }

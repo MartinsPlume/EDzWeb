@@ -66,9 +66,6 @@ function TeacherHome() {
                 <i className="fa fa-play" />
                 Watch video
               </Button>
-              <Button className="btn-round" color="neutral" type="button" outline>
-                Download
-              </Button>
             </div>
           </Container>
         </div>

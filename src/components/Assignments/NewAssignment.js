@@ -71,7 +71,6 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
             }),
             body: JSON.stringify({ 
                 'userId' : userId,
-                'userEmail' : userEmail,
                 'shortInstruction' : shortInstruction,
                 'exerciseId' : exerciseId
              })

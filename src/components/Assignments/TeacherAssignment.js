@@ -17,6 +17,7 @@ function TeacherAssignment() {
     const [assignmentSwitchProperty,setAssignmentSwitchProperty] = React.useState('idle')
     const [tableMessage, setTableMessage] = React.useState(ModalStatusStrings.ModalIdle)
     const [students,setStudents] = React.useState()
+    console.log(assignments)
 
     React.useEffect(() =>{
         fetchStudents()
@@ -44,13 +45,13 @@ function TeacherAssignment() {
         setTableMessage(message)
     }
 
-    function fetchAssignments (){
+    async function fetchAssignments (){
         const requestOptions = {
             method: 'GET',
             headers: AuthHeader.authHeader()
         };
   
-        fetch(
+        await fetch(
           WebApiRequests.EDzControlTeacherAssignments,
           requestOptions)
           .then(response => response.json())
@@ -59,13 +60,13 @@ function TeacherAssignment() {
           .catch(error => console.log({ error, isLoading: false }));
       }
     
-    function fetchExercises (){
+    async function fetchExercises (){
     const requestOptions = {
         method: 'GET',
         headers: AuthHeader.authHeader()
     };
 
-    fetch(
+    await fetch(
         WebApiRequests.EDzControlExercises,
         requestOptions)
         .then(response => response.json())

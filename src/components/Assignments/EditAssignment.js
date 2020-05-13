@@ -27,6 +27,8 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
 
     const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName)) 
     const [emails] = React.useState(students.map(student => student.email))
+    console.log(assignment)
+
     
     function renderEmails(){
         return emails.map(email => {
@@ -84,7 +86,6 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
         
         let updateData = assignment
         updateData.userId=userId
-        updateData.userEmail=userEmail
         updateData.shortInstruction=shortInstruction
         updateData.exerciseId=exerciseId
 
@@ -163,7 +164,7 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
                     <FormGroup>
                         <h3>{Strings.ExerciseText}</h3>
                         <Input
-                        defaultValue={exercises.find(exercise => exercise.exerciseId===exerciseId).exerciseName}
+                        // defaultValue={exercises.find(exercise => exercise.exerciseId===editAssignment.exerciseId).exerciseName}
                         onChange = {handleChange} 
                         type="select" 
                         name="Description" 

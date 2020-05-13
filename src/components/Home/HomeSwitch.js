@@ -18,11 +18,11 @@ const HomeSwitch = ({}) => {
             )
             break;
         case 'Teacher':
-        Output = (
-            <>
-                <TeacherHome/>
-            </>
-        )
+            Output = (
+                <>
+                    <TeacherHome/>
+                </>
+            )
         break;
         default:
             Output = (
