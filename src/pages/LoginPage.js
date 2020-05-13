@@ -25,6 +25,7 @@ import { authenticationService } from "../authorization/Authentication";
 
 // reactstrap components
 import {
+  Alert,
   Button,
   Card,
   Form,
@@ -45,9 +46,11 @@ const handleLogin = useCallback(
         const { email, password } = event.target.elements;
         try {
         await authenticationService.login(email.value, password.value);
-        history.push("/");
+        setAlertSuccess(true)
+        setTimeout(history.push("/"),2000);
         } catch (error) {
-        alert(error);
+          console.log(error)
+        setAlertWarning(true);
         }
     },
     [history]
@@ -61,13 +64,48 @@ const handleLogin = useCallback(
     };
   });
 
+  const [alertSuccess, setAlertSuccess] = React.useState(false);
+  const [alertWarning, setAlertWarning] = React.useState(false);
+
   return (
+    <div>
       <div
         className="section section-image section-login"
         style={{
           backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
         }}
       >
+        <div>
+          <Alert color="success" isOpen={alertSuccess}>
+            <Container>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+                onClick={() => setAlertSuccess(false)}
+              >
+                <i className="nc-icon nc-simple-remove" />
+              </button>
+              <span>Logging in . . .</span>
+            </Container>
+          </Alert>
+
+          <Alert color="warning" isOpen={alertWarning}>
+            <Container>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+                onClick={() => setAlertWarning(false)}
+              >
+                <i className="nc-icon nc-simple-remove" />
+              </button>
+              <span>Login failed</span>
+            </Container>
+          </Alert>
+        </div>
         <Container>
           <Row>
             <Col className="mx-auto" lg="4" md="6">
@@ -101,7 +139,7 @@ const handleLogin = useCallback(
                     Login
                   </Button>
                 </Form>
-                <div className="forgot">
+                {/* <div className="forgot">
                   <Button
                     className="btn-link"
                     color="danger"
@@ -110,7 +148,7 @@ const handleLogin = useCallback(
                   >
                     Forgot password?
                   </Button>
-                </div>
+                </div> */}
               </Card>
               <div className="col text-center">
                 <Button
@@ -134,6 +172,7 @@ const handleLogin = useCallback(
           </h6>
         </div>
       </div>
+    </div>
   );
 }
 

@@ -18,6 +18,8 @@
 */
 import React, { useCallback } from "react";
 
+import {history} from '../services/HistoryService'
+
 // import dependencies
 import { authenticationService } from "../authorization/Authentication";
 
@@ -65,7 +67,7 @@ const handleRegister = useCallback(
   const [alertWarning, setAlertWarning] = React.useState(false);
 
   return (
-    <>
+    <div>
     <div>
     <Alert color="success" isOpen={alertSuccess}>
           <Container>
@@ -97,13 +99,12 @@ const handleRegister = useCallback(
           </Container>
         </Alert>
     </div>
-      <div
-        className="page-header"
+    <div
+        className="section section-image section-login"
         style={{
           backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
         }}
       >
-        
 
         <div className="filter" />
         <Container>
@@ -123,7 +124,7 @@ const handleRegister = useCallback(
                     Register
                   </Button>
                 </Form>
-                <div className="forgot">
+                {/* <div className="forgot">
                   <Button
                     className="btn-link"
                     color="danger"
@@ -132,7 +133,7 @@ const handleRegister = useCallback(
                   >
                     Forgot password?
                   </Button>
-                </div>
+                </div> */}
               </Card>
             </Col>
           </Row>
@@ -144,7 +145,7 @@ const handleRegister = useCallback(
           </h6>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
