@@ -17,7 +17,6 @@ function TeacherAssignment() {
     const [assignmentSwitchProperty,setAssignmentSwitchProperty] = React.useState('idle')
     const [tableMessage, setTableMessage] = React.useState(ModalStatusStrings.ModalIdle)
     const [students,setStudents] = React.useState()
-    console.log(assignments)
 
     React.useEffect(() =>{
         fetchStudents()

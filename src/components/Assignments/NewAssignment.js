@@ -20,7 +20,9 @@ import {
 
 const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
 
-    const [userId, setUserId] = React.useState()
+    console.log(exercises)
+
+    const [userId, setUserId] = React.useState(students[0].id)
     const [userEmail, setUserEmail] = React.useState()
     const [shortInstruction, SetShortInstruction] = React.useState()
     const [exerciseId, setExerciseId] = React.useState()
@@ -52,7 +54,7 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
                 break;
 
             case AssignmentChangeSwitchStrings.AssignmentExercise:
-                setExerciseId(exercises.find(exercise => exercise.exerciseName===e.target.value).exerciseId)
+                setExerciseId(exercises.find(exercise => exercise.exerciseName===e.target.value).id)
                 break;
             
             default:
@@ -62,6 +64,13 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
 
     const addNew = async (e) => {
         e.preventDefault()
+
+        let UpdateData = {
+            'userId' : userId,
+            'shortInstruction' : shortInstruction,
+            'exerciseId' : exerciseId
+        }
+        console.log(UpdateData)
 
         const requestOptions = {
             method: 'POST',
@@ -144,7 +153,7 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
                         <Input 
                         onChange = {handleChange} 
                         type="select" 
-                        name="Description" 
+                        name="AssignmentExercise" 
                         id={AssignmentChangeSwitchStrings.AssignmentExercise}>
                             {renderExercises()}
                         </Input>
