@@ -23,7 +23,7 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
     const [userId, setUserId] = React.useState(students[0].id)
     const [userEmail, setUserEmail] = React.useState()
     const [shortInstruction, SetShortInstruction] = React.useState()
-    const [exerciseId, setExerciseId] = React.useState()
+    const [exerciseId, setExerciseId] = React.useState(exercises[0].id)
 
     const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName)) 
     const [emails] = React.useState(students.map(student => student.email))

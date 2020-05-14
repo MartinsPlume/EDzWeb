@@ -164,7 +164,7 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
                     <FormGroup>
                         <h3>{Strings.ExerciseText}</h3>
                         <Input
-                        // defaultValue={exercises.find(exercise => exercise.exerciseId===editAssignment.exerciseId).exerciseName}
+                        defaultValue={exercises.find(exercise => exercise.id===editAssignment.exerciseId).exerciseName}
                         onChange = {handleChange} 
                         type="select" 
                         name="Description" 
