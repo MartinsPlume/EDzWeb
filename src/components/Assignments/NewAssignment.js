@@ -20,8 +20,6 @@ import {
 
 const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
 
-    console.log(exercises)
-
     const [userId, setUserId] = React.useState(students[0].id)
     const [userEmail, setUserEmail] = React.useState()
     const [shortInstruction, SetShortInstruction] = React.useState()

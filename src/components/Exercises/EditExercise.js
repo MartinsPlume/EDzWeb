@@ -9,6 +9,7 @@ import {ExerciseChangeSwitchStrings, Strings, ModalStatusStrings} from '../../re
 
 // reactstrap components
 import {
+    Alert,
     Button,
     Container,
     Row,
@@ -18,12 +19,15 @@ import {
     Input
   } from "reactstrap";
 
-const EditExercise = ({sendClose, editExercise, setTableMessage}) => {
+const EditExercise = ({sendClose, editExercise}) => {
 
     const [exercise] = React.useState(editExercise)
     const [exerciseName, SetexerciseName] = React.useState(editExercise.exerciseName)
     const [exerciseShortDescription, SetExerciseShortDescription] = React.useState(editExercise.shortDescription)
     const [exerciseDescription, SetExerciseDescription] = React.useState(editExercise.Description)
+
+    const [alertSuccess, setAlertSuccess] = React.useState(false);
+    const [alertWarning, setAlertWarning] = React.useState(false);
 
     const handleChange = (e) => {
         switch(e.target.id){
@@ -56,8 +60,14 @@ const EditExercise = ({sendClose, editExercise, setTableMessage}) => {
         await fetch(
             WebApiRequests.EDzControlExercises + '/' + exercise.exerciseId,
             requestOptions)
-            .then(response => setTableMessage(ModalStatusStrings.Deleted)
-            )
+            .then(response => {
+                if (!response.ok) {
+                    setAlertWarning()
+                }
+                else{
+                    setAlertSuccess()
+                }
+            })
         sendClose()
     }
 
@@ -81,12 +91,50 @@ const EditExercise = ({sendClose, editExercise, setTableMessage}) => {
         await fetch(
             WebApiRequests.EDzControlExercises + '/' + exercise.exerciseId,
             requestOptions)
-            .then(setTableMessage(ModalStatusStrings.Updated))
+            .then(response => {
+                if (!response.ok) {
+                    setAlertWarning()
+                }
+                else{
+                    setAlertSuccess()
+                }
+            })
         sendClose()
     }
     
     return (
         <div>
+            <div>
+                <Alert color="success" isOpen={alertSuccess}>
+                    <Container>
+                        <button
+                        type="button"
+                        className="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => setAlertSuccess(false)}
+                        >
+                        <i className="nc-icon nc-simple-remove" />
+                        </button>
+                        <span>Success!</span>
+                    </Container>
+                </Alert>
+
+                <Alert color="warning" isOpen={alertWarning}>
+                    <Container>
+                        <button
+                        type="button"
+                        className="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => setAlertWarning(false)}
+                        >
+                        <i className="nc-icon nc-simple-remove" />
+                        </button>
+                        <span>Failed!</span>
+                    </Container>
+                </Alert>
+            </div>
             <Container>
                 <Row>
                     <Col>
