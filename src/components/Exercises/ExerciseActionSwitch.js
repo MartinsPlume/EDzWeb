@@ -1,37 +1,43 @@
 import React from 'react'
-import NewExercise from './NewExercise'
-import EditExercise from './EditExercise'
+
+// import dependencies
+import ExerciseNew from './ExerciseNew';
+import ExerciseEdit from './ExerciseEdit';
 
 // import resources
 import {ActionSwitchStrings} from '../../res/Strings'
 
+
 const ExerciseActionSwitch = ({
     type,
     sendClose,
-    editExercise,
-    setTableMessage}) => 
+    editExercise}) => 
     {
-
     let Output;
+    
     switch (type)
     {
         case ActionSwitchStrings.ActionSwitchNew:
             Output = (
                 <>
-                    <NewExercise 
+                    <ExerciseNew
                     sendClose={sendClose}
-                    setTableMessage={setTableMessage}
                     />
                 </>
             )
             break;
+
+
         case ActionSwitchStrings.ActionSwitchEdit:
+            let instructionVideo = editExercise.hasVideo
+            ? editExercise.instructionVideo
+            : ''
             Output = (
                 <>
-                    <EditExercise
-                    editExercise={editExercise}
+                    <ExerciseEdit
                     sendClose={sendClose}
-                    setTableMessage={setTableMessage}
+                    editExercise = {editExercise}
+                    instructionVideoLink = {instructionVideo}
                     />
                 </>
             )

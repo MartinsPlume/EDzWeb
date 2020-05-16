@@ -13,7 +13,6 @@ function TeacherExercise() {
     const [exercise,setExercise] = React.useState()
     const [exercises, setExercises] = React.useState([])
     const [exerciseSwitchProperty,setExerciseSwitchProperty] = React.useState('idle')
-    const [tableMessage, setTableMessage] = React.useState(ModalStatusStrings.ModalIdle)
 
     React.useEffect(() =>{
         fetchExercises()
@@ -33,10 +32,6 @@ function TeacherExercise() {
     function setExerciseSwitchIdle(){
         setExerciseSwitchProperty(ActionSwitchStrings.ActionSwitchIdle)
         fetchExercises()
-    }
-
-    function setTableModal(message){
-        setTableMessage(message)
     }
 
     function fetchExercises (){
@@ -60,12 +55,10 @@ function TeacherExercise() {
             type = {exerciseSwitchProperty}
             sendClose={setExerciseSwitchIdle}
             editExercise = {exercise}
-            setTableMessage={setTableModal}
             />
             <ExerciseTable
             exercises = {exercises}
             sendHandleChoice={handleChoice}
-            tableMessage={tableMessage}
             />
         </div>
     )

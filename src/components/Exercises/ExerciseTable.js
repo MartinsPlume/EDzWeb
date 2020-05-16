@@ -2,10 +2,12 @@ import React from 'react'
 
 // import dependencies
 import MaterialTable from 'material-table';
+import {AuthHeader} from 'authorization/AuthHeader'
+import {WebApiRequests} from 'authorization/Contracts'
 
 // import resources
 
-import {ActionSwitchStrings} from '../../res/Strings'
+import {Strings, ActionSwitchStrings} from '../../res/Strings'
 
 const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
 
@@ -21,6 +23,28 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
          exercises.find(
            exercise => exercise.id === rowData.id))
     }
+
+  async function handleDelete (e, rowData) {
+    e.preventDefault()
+
+    const requestOptions = {
+        method: 'DELETE',
+        headers: ({
+            'Authorization' : AuthHeader.authHeaderOnlyToken(),
+            'Content-Type': 'application/json'
+        })}
+    await fetch(
+        WebApiRequests.EDzControlExercises + '/' + rowData.id,
+        requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                console.log(response)
+            }
+            else{
+              console.log(response)
+            }
+        })
+}
 
   function renderTableData(){
     return exercises.map((exercise) => {
@@ -50,6 +74,13 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
                 tooltip: 'Edit exercise',
                 onClick: (event, rowData) =>
                 handleEdit(rowData)
+            },
+            {
+                icon: 'delete',
+                tooltip: 'Delete exercise',
+                onClick: (event, rowData) =>
+                handleDelete(event,rowData)
+
             },
             {
               icon: 'add',
