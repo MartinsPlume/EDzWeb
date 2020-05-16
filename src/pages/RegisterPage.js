@@ -18,10 +18,12 @@
 */
 import React, { useCallback } from "react";
 
-import {history} from '../services/HistoryService'
+import {history} from 'services/HistoryService'
 
 // import dependencies
-import { authenticationService } from "../authorization/Authentication";
+import { authenticationService } from "authorization/Authentication";
+import Logo from "components/Logo";
+
 
 // reactstrap components
 import {
@@ -33,6 +35,9 @@ import {
   Container, 
   Row, 
   Col } from "reactstrap";
+
+//import resources
+import { Strings } from "res/Strings";
 
 // core components
 const RegisterPage = ({history}) => {
@@ -111,7 +116,12 @@ const handleRegister = useCallback(
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="card-register ml-auto mr-auto">
-                <h3 className="title mx-auto">Welcome</h3>
+                <Col sm="12" md={{ size: 9, offset: 4 }}>
+                    <Logo/>
+                  </Col>
+                  <Col sm="12" md={{ size: 9, offset: 3 }}>
+                    <h3 className="title mx-auto">{Strings.WelcomeText}</h3>
+                  </Col>
                 <Form onSubmit={handleRegister} className="register-form">
                   <label>Email</label>
                   <Input name="email" placeholder="Email" type="text" />

@@ -19,7 +19,7 @@
 import React, { useCallback } from "react";
 
 // import dependencies
-import { authenticationService } from "../authorization/Authentication";
+import { authenticationService } from "authorization/Authentication";
 
 // import resources
 
@@ -37,6 +37,8 @@ import {
   Row,
   Col
 } from "reactstrap";
+import { Strings } from "res/Strings";
+import Logo from "components/Logo";
 
 const Login = ({history}) => {
 
@@ -110,7 +112,12 @@ const handleLogin = useCallback(
           <Row>
             <Col className="mx-auto" lg="4" md="6">
               <Card className="card-register">
-                <h3 className="title mx-auto">Welcome</h3>
+                  <Col sm="12" md={{ size: 9, offset: 4 }}>
+                    <Logo/>
+                  </Col>
+                  <Col sm="12" md={{ size: 9, offset: 3 }}>
+                    <h3 className="title mx-auto">{Strings.WelcomeText}</h3>
+                  </Col>
                 <Form onSubmit={handleLogin} className="register-form">
                   <label>Email</label>
                   <InputGroup className="form-group-no-border">

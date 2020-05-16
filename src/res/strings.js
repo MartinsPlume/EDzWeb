@@ -8,19 +8,26 @@ const EditTextWithSpaceForIcon = ' Edit'
 const AddExerciseText = 'Add Exercise'
 const ClearText = 'Clear'
 const SaveText = 'Save'
+const SaveTextWithSpaceForIcon = ' Save'
 const DeleteText = 'Delete'
 const ShortDescriptionText = 'Short description of Your exercise'
 const DescriptionText = 'Full description of the exercise'
+const InstructionVideoSwitchText = 'Enable instruction video'
+const InstructionVideoText = 'YouTube link of instruction video'
 const OkText = 'Ok!'
 const AssignmentText = 'Assignment'
 const UserEmailText = 'User'
 const ShortInstructionText = 'Short instructions for the assignment'
 const BackText = 'Return back'
+const WelcomeText = 'Welcome'
+const FailedToSaveText = 'Save failed!'
+const SucceededToSaveText = 'Saved successfully!'
 
 // Hint strings
 const ExerciseTextHint = 'Enter the name of Your exercise'
 const ExerciseShortDescriptionHint = 'Enter in one or two sentences short description of the given exercise'
 const ExerciseDescriptionHint = 'Enter full description of the given exercise'
+const ExerciseInstructionVideoHint = 'Copy URL of YouTube video'
 
 export const Strings = {
     // Export labels
@@ -33,19 +40,24 @@ export const Strings = {
     AddExerciseText,
     ClearText,
     SaveText,
+    SaveTextWithSpaceForIcon,
     DeleteText,
     ShortDescriptionText,
     DescriptionText,
+    InstructionVideoSwitchText,
+    InstructionVideoText,
     OkText,
     AssignmentText,
 	UserEmailText,
     ShortInstructionText,
     BackText,
+    WelcomeText,
 
     // Export hints
     ExerciseTextHint,
     ExerciseShortDescriptionHint,
-    ExerciseDescriptionHint
+    ExerciseDescriptionHint,
+    ExerciseInstructionVideoHint
 }
 
 //UserRole switch strings
@@ -76,11 +88,13 @@ export const ActionSwitchStrings = {
 const ExerciseName = 'ExerciseName'
 const ShortDescription = 'ShortDescription'
 const Description = 'Description'
+const InstructionVideo = 'InstructionVideo'
 
 export const ExerciseChangeSwitchStrings = {
     ExerciseName,
     ShortDescription,
-    Description
+    Description,
+    InstructionVideo
 }
 
 // Assignment Handle change switch strings
@@ -106,7 +120,3 @@ export const ModalStatusStrings = {
     ModalAdded,
     ModalDeleted
 }
-
-// export const ModalMessageStrings = {
-
-// }

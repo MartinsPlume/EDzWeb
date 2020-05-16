@@ -15,10 +15,14 @@ import Assignments from 'components/Assignments/Assignments';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
 
-import {Button, NavItem, Nav} from "reactstrap";
 import NavigationBar from 'components/NavigationBar';
 
 // import reactstrap components
+import {Button,
+   NavItem,
+   Nav,
+   Col} from "reactstrap";
+
 
 export class App extends Component {
   constructor(props) {
@@ -74,25 +78,27 @@ export class App extends Component {
     const { routes } = state;
     return routes.map(route => {
         return (
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink to={route.link} key={route.key}>
-                <Button
-                  className="btn-round mr-1"
-                  outline
-                  size = "lg"
-                  color="default"
-                  type="button"
-                >
-                  <i
-                            aria-hidden={false}
-                            className={route.icon}
-                          />
-                  {route.title}
-                </Button>
-              </NavLink>
-            </NavItem>
-          </Nav>
+          <Col>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink to={route.link} key={route.key}>
+                  <Button
+                    className="btn-round mr-1"
+                    outline
+                    size = "lg"
+                    color="default"
+                    type="button"
+                  >
+                    <i
+                              aria-hidden={false}
+                              className={route.icon}
+                            />
+                    {route.title}
+                  </Button>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Col>
         );
       });
     }

@@ -19,8 +19,6 @@
 import React, { Component } from 'react'
 import { authenticationService } from '../authorization/Authentication'
 
-// import dependencies
-
 // reactstrap components
 import {
     Button,
@@ -29,11 +27,14 @@ import {
     NavLink,
     Nav,
     Navbar,
-    Container
+    Container,
+    Col,
+    Row
   } from "reactstrap";
 
-  //
+  // import resources
   import {Strings} from '../res/Strings'
+import Logo from './Logo';
 
 class NavigationBar extends Component {
 
@@ -53,6 +54,7 @@ class NavigationBar extends Component {
             return(
             <NavLink href={'/login'}>
                 <Button
+                xs="auto"
                 onClick = {this.handleLogout}
                     className="btn-round mr-1"
                     color="warning"
@@ -72,21 +74,27 @@ class NavigationBar extends Component {
         return (
             <div>
               <Navbar className="bg-success" expand="md">
-                <NavbarBrand href='/'>
-                    EDz
-                </NavbarBrand>
-                <Container>
-                    {this.state.links}
-                </Container>
-                <Container>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            
-                                {this.renderLogoutButton()}
-                            
-                        </NavItem>
-                    </Nav>
-                </Container>
+                  <Container>
+                        <Col xs="auto">
+                            <NavbarBrand href='/'>
+                                <Logo/>
+                            </NavbarBrand>
+                        </Col>
+                        <Col xs="9">
+                            <Row>
+                                {this.state.links}
+                            </Row>
+                        </Col>
+                        <Col xs="auto">
+                            <Nav className="mr-auto" navbar>
+                                <NavItem>
+                                    
+                                        {this.renderLogoutButton()}
+                                    
+                                </NavItem>
+                            </Nav>
+                        </Col>
+                    </Container>
               </Navbar>
             </div>
         )
