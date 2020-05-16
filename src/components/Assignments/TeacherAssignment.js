@@ -74,13 +74,13 @@ function TeacherAssignment() {
         .catch(error => console.log({ error, isLoading: false }));
     }
 
-    function fetchStudents() {
+    async function fetchStudents() {
     const requestOptions = {
         method: 'GET',
         headers: AuthHeader.authHeader()
     };
 
-    fetch(
+    await fetch(
         WebApiRequests.EDzControlGetStudents,
         requestOptions)
         .then(response => response.json())
@@ -103,6 +103,7 @@ function TeacherAssignment() {
             assignments = {assignments}
             sendHandleChoice={handleChoice}
             tableMessage={tableMessage}
+            refreshTable={fetchAssignments}
             />
             
         </div>

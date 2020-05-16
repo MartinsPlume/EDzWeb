@@ -28,10 +28,6 @@ const ExerciseEdit = ({sendClose, editExercise, instructionVideoLink}) => {
     const [hasVideo, setHasVideo] = React.useState(editExercise.hasVideo)
     const [InstructionVideo, setInstructionVideo] = React.useState(instructionVideoLink)
 
-    const[isReadyToSave, setIsReadyToSave] = React.useState(false)
-
-    const[saveStatusText, setSaveStatusText] = React.useState()
-
     const handleChange = (e) => {
         switch(e.target.id){
             case ExerciseChangeSwitchStrings.ExerciseName:
@@ -66,7 +62,6 @@ const ExerciseEdit = ({sendClose, editExercise, instructionVideoLink}) => {
                 'Description' : exerciseDescription,
                 'HasVideo' : hasVideo,
                 'InstructionVideo' : updateInstructionVideo
-
         }
 
         const requestOptions = {
@@ -163,7 +158,6 @@ const ExerciseEdit = ({sendClose, editExercise, instructionVideoLink}) => {
                         </Col>
                         <Col sm={{ size: 3, offset: 3}}>
                             <Button
-                                disabled={isReadyToSave}
                                 className="btn btn-round mr-1"
                                 color="success"
                                 type="submit"

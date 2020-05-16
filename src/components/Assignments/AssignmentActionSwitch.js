@@ -1,6 +1,6 @@
 import React from 'react'
-import NewAssignment from './NewAssignment'
-import EditAssignment from './EditAssignment'
+import AssignmentNew from 'components/Assignments/AssignmentNew'
+import AssignmentEdit from 'components/Assignments/AssignmentEdit'
 
 // import resources
 import {ActionSwitchStrings} from '../../res/Strings'
@@ -20,24 +20,24 @@ const AssignmentActionSwitch = ({
         case ActionSwitchStrings.ActionSwitchNew:
             Output = (
                 <>
-                    <NewAssignment 
+                    <AssignmentNew 
                     students={students}
                     exercises = {exercises}
                     sendClose={sendClose}
-                    setTableMessage={setTableMessage}
                     />
                 </>
             )
             break;
         case ActionSwitchStrings.ActionSwitchEdit:
+            let editAssignmentExercise = exercises.find(exercise => exercise.id===editAssignment.exerciseId).exerciseName
             Output = (
                 <>
-                    <EditAssignment
+                    <AssignmentEdit
                     editAssignment = {editAssignment}
                     students={students}
                     exercises = {exercises}
                     sendClose={sendClose}
-                    setTableMessage={setTableMessage}
+                    editAssignmentExercise = {editAssignmentExercise}
                     />
                 </>
             )

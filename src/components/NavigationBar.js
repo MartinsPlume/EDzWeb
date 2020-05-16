@@ -88,9 +88,7 @@ class NavigationBar extends Component {
                         <Col xs="auto">
                             <Nav className="mr-auto" navbar>
                                 <NavItem>
-                                    
-                                        {this.renderLogoutButton()}
-                                    
+                                    {this.renderLogoutButton()}
                                 </NavItem>
                             </Nav>
                         </Col>

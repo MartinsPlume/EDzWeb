@@ -19,12 +19,12 @@
 import React from "react";
 
 // import dependencies
-import youtube from 'react-youtube'
 import {GetId} from '../../services/YoutubeUrlExtractorService'
+import YouTube from "react-youtube";
 
 // reactstrap components
 import { Button, Container } from "reactstrap";
-import YouTube from "react-youtube";
+
 
 const videoUrl = 'https://www.youtube.com/watch?v=9RuNWWdhHSo'
 

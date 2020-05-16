@@ -59,6 +59,7 @@ function TeacherExercise() {
             <ExerciseTable
             exercises = {exercises}
             sendHandleChoice={handleChoice}
+            refreshTable = {fetchExercises}
             />
         </div>
     )

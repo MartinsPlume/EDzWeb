@@ -3,6 +3,8 @@ import React from 'react'
 // import dependencies
 import {AuthHeader} from '../../authorization/AuthHeader'
 import {WebApiRequests} from '../../authorization/Contracts'
+import ActioneHeader from 'components/ActionHeader';
+import { ControlObjUndefined } from 'services/UndefinedService';
 
 // import resources
 import {Strings, AssignmentChangeSwitchStrings, ModalStatusStrings} from '../../res/Strings'
@@ -18,12 +20,13 @@ import {
     Input
   } from "reactstrap";
 
-const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
 
-    const [userId, setUserId] = React.useState(students[0].id)
+const AssignmentNew = ({students, exercises, sendClose}) => {
+
+    const [userId, setUserId] = React.useState(()=>(ControlObjUndefined(students)) ? students[0].id : '')
     const [userEmail, setUserEmail] = React.useState()
     const [shortInstruction, SetShortInstruction] = React.useState()
-    const [exerciseId, setExerciseId] = React.useState(exercises[0].id)
+    const [exerciseId, setExerciseId] = React.useState(() => (ControlObjUndefined(exercises)) ? exercises[0].id : '')
 
     const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName)) 
     const [emails] = React.useState(students.map(student => student.email))
@@ -60,15 +63,8 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
         }
     }
 
-    const addNew = async (e) => {
+    const handleSave = async (e) => {
         e.preventDefault()
-
-        let UpdateData = {
-            'userId' : userId,
-            'shortInstruction' : shortInstruction,
-            'exerciseId' : exerciseId
-        }
-        console.log(UpdateData)
 
         const requestOptions = {
             method: 'POST',
@@ -85,7 +81,9 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
         await fetch(
             WebApiRequests.EDzControlTeacherAssignments,
             requestOptions)
-            .then(response => setTableMessage(ModalStatusStrings.ModalAdded));
+            .then(response => {
+                console.log(response)
+            })
         
         sendClose()
     }
@@ -93,41 +91,15 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
 
     return (
         <div>
-            <div>
-                <Container>
-                    <Row>
-                        <Col>
-                            <h1>
-                            <i
-                                aria-hidden={false}
-                                className='nc-icon nc-paper'
-                                />
-                                {Strings.NewTextWithSpaceForIcon}
-                            </h1>
-                        </Col>                    
-                        <Col>
-                            <h2>{Strings.AssignmentText}</h2>
-                        </Col>
-                        <Col className="form-row ">
-                            <Button
-                                onClick= {(e) => sendClose()}
-                                className="btn btn-round mr-1"
-                                color="warning"
-                                type="button"
-                                >
-                            <i
-                                aria-hidden={false}
-                                className='nc-icon nc-simple-remove'
-                                />
-                                {Strings.CloseTextWithSpaceForIcon}
-                            </Button>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
 
-            <div>
-                <Form onSubmit = {addNew}>
+            <ActioneHeader
+                action = {Strings.NewTextWithSpaceForIcon}
+                title = {Strings.AssignmentText}
+                sendClose = {sendClose}
+                />
+
+            <Container>
+                <Form onSubmit = {handleSave}>
                     <FormGroup>
                         <h3>{Strings.UserEmailText}</h3>
                         <Input 
@@ -168,9 +140,9 @@ const NewAssignment = ({students, exercises, sendClose, setTableMessage}) => {
                         </Button>
                     </Col>
                 </Form>
-            </div>
+            </Container>
         </div>
     )
 }
 
-export default NewAssignment
+export default AssignmentNew

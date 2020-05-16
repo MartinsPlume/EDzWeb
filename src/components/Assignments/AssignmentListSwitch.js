@@ -5,7 +5,7 @@ import AssignmentList from './AssignmentList'
 
 // import resources
 import {ActionSwitchStrings} from '../../res/Strings'
-import AssignmentExercise from './AssignmentExercise';
+import ExerciseView from '../Exercises/ExerciseView';
 
 const AssignmentListSwitch = ({
     type,
@@ -20,7 +20,7 @@ const AssignmentListSwitch = ({
         case ActionSwitchStrings.ActionSwitchView:
             Output = (
                 <>
-                    <AssignmentExercise
+                    <ExerciseView
                     exercise = {exercise}
                     sendClose = {sendClose}
                     />

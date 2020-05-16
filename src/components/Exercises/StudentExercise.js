@@ -37,7 +37,7 @@ function StudentExercise() {
         if (assignmentSwitchProperty !== choice) {
             setAssignmentSwitchProperty(choice)
             setExercise(exercises.find(
-                exercise => exercise.exerciseId === exerciseId
+                exercise => exercise.id === exerciseId
             ))
         }
         else {

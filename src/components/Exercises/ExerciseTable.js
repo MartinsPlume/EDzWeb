@@ -9,7 +9,7 @@ import {WebApiRequests} from 'authorization/Contracts'
 
 import {Strings, ActionSwitchStrings} from '../../res/Strings'
 
-const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
+const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
 
   const [columns] = React.useState([
       { title: 'Id', field: 'id', type: 'numeric' },
@@ -41,7 +41,7 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
                 console.log(response)
             }
             else{
-              console.log(response)
+              refreshTable()
             }
         })
 }
@@ -80,7 +80,6 @@ const ExerciseTable = ({exercises,sendHandleChoice, tableMessage}) => {
                 tooltip: 'Delete exercise',
                 onClick: (event, rowData) =>
                 handleDelete(event,rowData)
-
             },
             {
               icon: 'add',

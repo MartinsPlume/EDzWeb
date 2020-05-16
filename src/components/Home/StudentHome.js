@@ -18,8 +18,14 @@
 */
 import React from "react";
 
+// import dependencies
+import {GetId} from '../../services/YoutubeUrlExtractorService'
+import YouTube from "react-youtube";
+
 // reactstrap components
 import { Button, Container } from "reactstrap";
+
+const videoUrl = 'https://www.youtube.com/watch?v=2MF6cDl_m_Y'
 
 // core components
 
@@ -56,6 +62,9 @@ function StudentHome() {
               <h1>EDz Education</h1>
                 <h3>Student</h3>
               <br />
+              <YouTube
+              videoId={GetId(videoUrl)}
+              />
               <Button
                 href="https://www.youtube.com/watch?v=wrOM4zJcJjM&t="
                 className="btn-round mr-1"
@@ -64,7 +73,7 @@ function StudentHome() {
                 outline
               >
                 <i className="fa fa-play" />
-                Watch video
+                More info
               </Button>
             </div>
           </Container>

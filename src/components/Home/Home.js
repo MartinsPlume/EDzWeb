@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+
 import HomeSwitch from './HomeSwitch'
 
-export class Home extends Component {
-  render() {
-    return (
-      <div>
+import React from 'react'
+
+const Home = () => {
+  return (
+    <div>
         <HomeSwitch/>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Home

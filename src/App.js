@@ -52,7 +52,7 @@ export class App extends Component {
           component: Assignments
         }
       ],
-      currentRole : authenticationService.currentUserRoleValue
+      currentRole : authenticationService.currentUserRoleValue,
     }
   }
 
@@ -65,11 +65,11 @@ export class App extends Component {
     const { routes } = state;
      return routes.map(route => {
       const routeKey = `${route.key} ${route.title}`;
-      return <PrivateRoute 
+      return <PrivateRoute
       exact key={routeKey} 
       path={route.link} 
       component={route.component} 
-      currentRole = {this.state.currentRole}/>;
+      />;
     });
   }
 
@@ -78,7 +78,6 @@ export class App extends Component {
     const { routes } = state;
     return routes.map(route => {
         return (
-          <Col>
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <NavLink to={route.link} key={route.key}>
@@ -98,16 +97,16 @@ export class App extends Component {
                 </NavLink>
               </NavItem>
             </Nav>
-          </Col>
         );
       });
     }
-
+  
   render() {
     return (
       <Router>
         <div>
-          <NavigationBar links={this.renderMenuItems()}/>
+          <NavigationBar
+          links={this.renderMenuItems()}/>
             <div>
               <Switch>
                 {this.renderRoutes()}

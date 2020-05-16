@@ -18,7 +18,7 @@ const ExercisesList = ({exercises, handleChoice}) => {
             return <ListGroupItem
             onClick={() => handleChoice(
                 ActionSwitchStrings.ActionSwitchView,
-                exercise.exerciseId)} 
+                exercise.id)} 
                 tag="button" action>
                     <ListGroupItemHeading>{exercise.exerciseName}</ListGroupItemHeading>
                     <ListGroupItemText>{exercise.shortDescription}</ListGroupItemText>

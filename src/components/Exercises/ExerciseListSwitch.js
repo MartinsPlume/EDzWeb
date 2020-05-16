@@ -3,7 +3,7 @@ import React from 'react'
 // import dependencies
 import ExercisesList from './ExercisesList';
 
-import AssignmentExercise from 'components/Assignments/AssignmentExercise';
+import ExerciseView from 'components/Exercises/ExerciseView';
 
 
 
@@ -24,7 +24,7 @@ const ExerciseListSwitch = ({
         case ActionSwitchStrings.ActionSwitchView:
             Output = (
                 <>
-                    <AssignmentExercise 
+                    <ExerciseView 
                     exercise = {exercise}
                     sendClose = {sendClose}
                     />

@@ -3,6 +3,8 @@ import React from 'react'
 // import dependencies
 import {AuthHeader} from '../../authorization/AuthHeader'
 import {WebApiRequests} from '../../authorization/Contracts'
+import ActioneHeader from 'components/ActionHeader';
+
 
 // import resources
 import {Strings, AssignmentChangeSwitchStrings, ModalStatusStrings} from '../../res/Strings'
@@ -18,7 +20,7 @@ import {
     Input
   } from "reactstrap";
 
-const EditAssignment = ({editAssignment, students, exercises, sendClose, setTableMessage}) => {
+const AssignmentEdit = ({editAssignment, students, exercises, sendClose, editAssignmentExercise}) => {
     const [assignment] = React.useState(editAssignment)
     const [userId, setUserId] = React.useState(editAssignment.userId)
     const [userEmail, setUserEmail] = React.useState(editAssignment.userEmail)
@@ -27,8 +29,6 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
 
     const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName)) 
     const [emails] = React.useState(students.map(student => student.email))
-    console.log(assignment)
-
     
     function renderEmails(){
         return emails.map(email => {
@@ -54,8 +54,9 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
         await fetch(
             WebApiRequests.EDzControlTeacherAssignments + '/' + assignment.id,
             requestOptions)
-            .then(response => setTableMessage(ModalStatusStrings.Deleted)
-            )
+            .then(response => {
+                console.log(response)
+            })
         sendClose()
     }
 
@@ -71,7 +72,7 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
                 break;
 
             case AssignmentChangeSwitchStrings.AssignmentExercise:
-                setExerciseId(exercises.find(exercise => exercise.exerciseName===e.target.value).exerciseId)
+                setExerciseId(exercises.find(exercise => exercise.exerciseName===e.target.value).id)
                 break;
             
             default:
@@ -82,8 +83,6 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
     const addEdit = async (e) => {
         e.preventDefault()
 
-        e.preventDefault()
-        
         let updateData = assignment
         updateData.userId=userId
         updateData.shortInstruction=shortInstruction
@@ -100,7 +99,9 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
         await fetch(
             WebApiRequests.EDzControlTeacherAssignments + '/' + assignment.id,
             requestOptions)
-            .then(response => setTableMessage(ModalStatusStrings.ModalAdded));
+            .then(response => {
+                console.log(response)
+            })
         
         sendClose()
     }
@@ -108,40 +109,13 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
 
     return (
         <div>
-            <div>
-                <Container>
-                    <Row>
-                        <Col>
-                            <h1>
-                            <i
-                                aria-hidden={false}
-                                className='nc-icon nc-paper'
-                                />
-                                {Strings.NewTextWithSpaceForIcon}
-                            </h1>
-                        </Col>                    
-                        <Col>
-                            <h2>{Strings.AssignmentText}</h2>
-                        </Col>
-                        <Col className="form-row ">
-                            <Button
-                                onClick= {(e) => sendClose()}
-                                className="btn btn-round mr-1"
-                                color="warning"
-                                type="button"
-                                >
-                            <i
-                                aria-hidden={false}
-                                className='nc-icon nc-simple-remove'
-                                />
-                                {Strings.CloseTextWithSpaceForIcon}
-                            </Button>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+             <ActioneHeader
+                action = {Strings.EditTextWithSpaceForIcon}
+                title = {Strings.AssignmentText}
+                sendClose = {sendClose}
+            />
 
-            <div>
+            <Container>
                 <Form onSubmit = {addEdit}>
                     <FormGroup>
                         <h3>{Strings.UserEmailText}</h3>
@@ -164,7 +138,7 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
                     <FormGroup>
                         <h3>{Strings.ExerciseText}</h3>
                         <Input
-                        defaultValue={exercises.find(exercise => exercise.id===editAssignment.exerciseId).exerciseName}
+                        defaultValue={editAssignmentExercise}
                         onChange = {handleChange} 
                         type="select" 
                         name="Description" 
@@ -172,32 +146,33 @@ const EditAssignment = ({editAssignment, students, exercises, sendClose, setTabl
                             {renderExercises()}
                         </Input>
                     </FormGroup>
+                    <Container>
                     <Row>
                         <Col>
-                            <Button
-                                onClick={handleDelete}
-                                className="btn btn-round mr-1"
-                                color="danger"
-                                type="button"
-                                >
-                                {Strings.DeleteText}
-                            </Button>
                         </Col>
-                        <Col className="form-row ">
+                        <Col>
+                        </Col>
+                        <Col>
+                        </Col>
+                        <Col sm={{ size: 3, offset: 3}}>
                             <Button
                                 className="btn btn-round mr-1"
                                 color="success"
                                 type="submit"
                                 >
-                                {Strings.SaveText}
+                                <i
+                                aria-hidden={false}
+                                className='nc-icon nc-check-2'
+                                />
+                                {Strings.SaveTextWithSpaceForIcon}
                             </Button>
                         </Col>
-                    </Row>
-                    </Form>
-                    
-            </div>
+                        </Row>
+                    </Container>
+                </Form>
+            </Container>
         </div>
     )
 }
 
-export default EditAssignment
+export default AssignmentEdit

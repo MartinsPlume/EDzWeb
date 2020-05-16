@@ -2,12 +2,14 @@ import React from 'react'
 
 // import dependencies
 import MaterialTable from 'material-table';
+import {AuthHeader} from 'authorization/AuthHeader'
+import {WebApiRequests} from 'authorization/Contracts'
 
 // import resources
 
 import {ActionSwitchStrings} from '../../res/Strings'
 
-const AssignmentTable = ({assignments, sendHandleChoice, tableMessage}) => {
+const AssignmentTable = ({assignments, sendHandleChoice, refreshTable}) => {
 
   const [columns] = React.useState([
       { title: 'Id', field: 'id', type: 'numeric' },
@@ -35,6 +37,28 @@ const AssignmentTable = ({assignments, sendHandleChoice, tableMessage}) => {
       })
     }
 
+  async function handleDelete (e, rowData) {
+    e.preventDefault()
+
+    const requestOptions = {
+        method: 'DELETE',
+        headers: ({
+            'Authorization' : AuthHeader.authHeaderOnlyToken(),
+            'Content-Type': 'application/json'
+        })}
+    await fetch(
+        WebApiRequests.EDzControlTeacherAssignments + '/' + rowData.id,
+        requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                console.log(response)
+            }
+            else{
+              refreshTable()
+            }
+        })
+}
+
   return (
       <div>
         <div>
@@ -51,6 +75,12 @@ const AssignmentTable = ({assignments, sendHandleChoice, tableMessage}) => {
                 onClick: (event, rowData) =>
                 handleEdit(rowData)
             },
+            {
+              icon: 'delete',
+              tooltip: 'Delete exercise',
+              onClick: (event, rowData) =>
+              handleDelete(event,rowData)
+          },
             {
               icon: 'add',
               tooltip: 'Add assignment',
