@@ -77,7 +77,7 @@ const AssignmentTable = ({assignments, sendHandleChoice, refreshTable}) => {
             },
             {
               icon: 'delete',
-              tooltip: 'Delete exercise',
+              tooltip: 'Delete assignment',
               onClick: (event, rowData) =>
               handleDelete(event,rowData)
           },
