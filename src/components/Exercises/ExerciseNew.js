@@ -10,6 +10,7 @@ import {Strings, ExerciseChangeSwitchStrings} from 'res/Strings'
 
 // reactstrap components
 import {
+    Alert,
     Button,
     Container,
     Row,
@@ -29,9 +30,7 @@ const ExerciseNew = ({sendClose}) => {
     const [hasVideo, setHasVideo] = React.useState()
     const [InstructionVideo, setInstructionVideo] = React.useState()
 
-    const[isReadyToSave, setIsReadyToSave] = React.useState(false)
-
-    const[saveStatusText, setSaveStatusText] = React.useState()
+    const [alertWarning, setAlertWarning] = React.useState(false);
 
     const handleChange = (e) => {
         switch(e.target.id){
@@ -79,10 +78,13 @@ const ExerciseNew = ({sendClose}) => {
             WebApiRequests.EDzControlExercises,
             requestOptions)
             .then(response => {
-                console.log(response)
+                if (!response.ok) {
+                    setAlertWarning(true)
                 }
-        )
-        sendClose()
+                else{
+                    sendClose()
+                }
+            })
     }
 
     return (
@@ -92,6 +94,21 @@ const ExerciseNew = ({sendClose}) => {
                     title = {Strings.ExerciseText}
                     sendClose = {sendClose}
                 />
+            
+            <Alert color="warning" isOpen={alertWarning}>
+                <Container>
+                    <button
+                        type="button"
+                        className="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => setAlertWarning(false)}
+                    >
+                        <i className="nc-icon nc-simple-remove" />
+                    </button>
+                    <span>{Strings.FailedToSaveText}</span>
+                </Container>
+            </Alert>
 
             <Container>
             <Form onSubmit = {handleSave}>
@@ -156,7 +173,6 @@ const ExerciseNew = ({sendClose}) => {
                 </Col>
                 <Col sm={{ size: 3, offset: 3}}>
                     <Button
-                        disabled={isReadyToSave}
                         className="btn btn-round mr-1"
                         color="success"
                         type="submit"

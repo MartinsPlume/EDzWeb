@@ -10,6 +10,7 @@ import {Strings, ExerciseChangeSwitchStrings} from 'res/Strings'
 
 // reactstrap components
 import {
+    Alert,
     Button,
     Container,
     Row,
@@ -27,6 +28,8 @@ const ExerciseEdit = ({sendClose, editExercise, instructionVideoLink}) => {
     const [exerciseDescription, SetExerciseDescription] = React.useState(editExercise.description)
     const [hasVideo, setHasVideo] = React.useState(editExercise.hasVideo)
     const [InstructionVideo, setInstructionVideo] = React.useState(instructionVideoLink)
+
+    const [alertWarning, setAlertWarning] = React.useState(false);
 
     const handleChange = (e) => {
         switch(e.target.id){
@@ -77,9 +80,13 @@ const ExerciseEdit = ({sendClose, editExercise, instructionVideoLink}) => {
             WebApiRequests.EDzControlExercises + '/' + editExercise.id,
             requestOptions)
             .then(response => {
-                console.log(response)
+                if (!response.ok) {
+                    setAlertWarning(true)
+                }
+                else{
+                    sendClose()
+                }
             })
-        sendClose()
     }
 
     return (
@@ -89,6 +96,22 @@ const ExerciseEdit = ({sendClose, editExercise, instructionVideoLink}) => {
                 title = {Strings.ExerciseText}
                 sendClose = {sendClose}
             />
+
+            <Alert color="warning" isOpen={alertWarning}>
+                <Container>
+                    <button
+                        type="button"
+                        className="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => setAlertWarning(false)}
+                    >
+                        <i className="nc-icon nc-simple-remove" />
+                    </button>
+                    <span>{Strings.FailedToSaveText}</span>
+                </Container>
+            </Alert>
+
             <Container>
                 <Form onSubmit = {handleSave}>
 
