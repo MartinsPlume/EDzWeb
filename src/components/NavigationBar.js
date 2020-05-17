@@ -80,7 +80,7 @@ class NavigationBar extends Component {
                                 <Logo/>
                             </NavbarBrand>
                         </Col>
-                        <Col xs="9">
+                        <Col xs="auto">
                             <Row>
                                 {this.state.links}
                             </Row>
