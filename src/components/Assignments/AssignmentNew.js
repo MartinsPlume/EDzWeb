@@ -14,6 +14,7 @@ import {
     Button,
     Container,
     Col,
+    Row,
     Form,
     FormGroup,
     Input
@@ -125,17 +126,29 @@ const AssignmentNew = ({students, exercises, sendClose}) => {
                             {renderExercises()}
                         </Input>
                     </FormGroup>
-                    <Col>
-                    </Col>
-                    <Col className="form-row ">
-                        <Button
-                            className="btn btn-round mr-1"
-                            color="success"
-                            type="submit"
-                            >
-                            {Strings.SaveText}
-                        </Button>
-                    </Col>
+                    <Container>
+                        <Row>
+                            <Col>
+                            </Col>
+                            <Col>
+                            </Col>
+                            <Col>
+                            </Col>
+                            <Col sm={{ size: 3, offset: 3}}>
+                                <Button
+                                    className="btn btn-round mr-1"
+                                    color="success"
+                                    type="submit"
+                                    >
+                                    <i
+                                    aria-hidden={false}
+                                    className='nc-icon nc-check-2'
+                                    />
+                                    {Strings.SaveTextWithSpaceForIcon}
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Form>
             </Container>
         </div>

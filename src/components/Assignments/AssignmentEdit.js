@@ -147,26 +147,26 @@ const AssignmentEdit = ({editAssignment, students, exercises, sendClose, editAss
                         </Input>
                     </FormGroup>
                     <Container>
-                    <Row>
-                        <Col>
-                        </Col>
-                        <Col>
-                        </Col>
-                        <Col>
-                        </Col>
-                        <Col sm={{ size: 3, offset: 3}}>
-                            <Button
-                                className="btn btn-round mr-1"
-                                color="success"
-                                type="submit"
-                                >
-                                <i
-                                aria-hidden={false}
-                                className='nc-icon nc-check-2'
-                                />
-                                {Strings.SaveTextWithSpaceForIcon}
-                            </Button>
-                        </Col>
+                        <Row>
+                            <Col>
+                            </Col>
+                            <Col>
+                            </Col>
+                            <Col>
+                            </Col>
+                            <Col sm={{ size: 3, offset: 3}}>
+                                <Button
+                                    className="btn btn-round mr-1"
+                                    color="success"
+                                    type="submit"
+                                    >
+                                    <i
+                                    aria-hidden={false}
+                                    className='nc-icon nc-check-2'
+                                    />
+                                    {Strings.SaveTextWithSpaceForIcon}
+                                </Button>
+                            </Col>
                         </Row>
                     </Container>
                 </Form>
