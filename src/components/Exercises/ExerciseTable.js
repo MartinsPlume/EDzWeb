@@ -6,8 +6,13 @@ import {AuthHeader} from 'authorization/AuthHeader'
 import {WebApiRequests} from 'authorization/Contracts'
 
 // import resources
-
 import {Strings, ActionSwitchStrings} from '../../res/Strings'
+
+// import reacstrap components
+import {
+  Alert,
+  Container
+} from "reactstrap";
 
 const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
 
@@ -16,6 +21,8 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
       { title: 'Name', field: 'exerciseName' },
       { title: 'Description', field: 'shortDescription'}
     ])
+
+  const [alertWarning, setAlertWarning] = React.useState(false);
 
   function handleEdit (rowData) {
       sendHandleChoice(
@@ -38,7 +45,7 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
         requestOptions)
         .then(response => {
             if (!response.ok) {
-                console.log(response)
+                setAlertWarning(true)
             }
             else{
               refreshTable()
@@ -61,6 +68,22 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
 
   return (
       <div>
+        <div>
+        <Alert color="warning" isOpen={alertWarning}>
+          <Container>
+            <button
+              type="button"
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setAlertWarning(false)}
+            >
+              <i className="nc-icon nc-simple-remove" />
+            </button>
+            <span>{Strings.DoNotDeleteUsedExercise}</span>
+          </Container>
+        </Alert>
+      </div>
         <div>
           <MaterialTable
           title="Exercise table"
