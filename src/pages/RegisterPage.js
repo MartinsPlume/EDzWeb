@@ -41,13 +41,6 @@ import { Strings } from "res/Strings";
 
 // core components
 const RegisterPage = ({history}) => {
-  document.documentElement.classList.remove("nav-open");
-  React.useEffect(() => {
-    document.body.classList.add("register-page");
-    return function cleanup() {
-      document.body.classList.remove("register-page");
-    };
-  });
 
 const handleRegister = useCallback(
     async event => {
@@ -55,7 +48,6 @@ const handleRegister = useCallback(
         const { email, password } = event.target.elements;
         try {
         await authenticationService.register(email.value, password.value);
-        setAlertSuccess(true)
         setTimeout(redirect(),2000)
         } catch (error) {
         setAlertWarning(true)
@@ -68,27 +60,11 @@ const handleRegister = useCallback(
     history.push("/login");
   }
 
-  const [alertSuccess, setAlertSuccess] = React.useState(false);
   const [alertWarning, setAlertWarning] = React.useState(false);
 
   return (
     <div>
-    <div>
-    <Alert color="success" isOpen={alertSuccess}>
-          <Container>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
-              onClick={() => setAlertSuccess(false)}
-            >
-              <i className="nc-icon nc-simple-remove" />
-            </button>
-            <span>Registering . . .</span>
-          </Container>
-        </Alert>
-
+      <div>
         <Alert color="warning" isOpen={alertWarning}>
           <Container>
             <button
@@ -103,15 +79,14 @@ const handleRegister = useCallback(
             <span>Registration failed</span>
           </Container>
         </Alert>
-    </div>
+      </div>
+
     <div
-        className="section section-image section-login"
+        className="page-header"
         style={{
           backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
         }}
       >
-
-        <div className="filter" />
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
@@ -145,17 +120,31 @@ const handleRegister = useCallback(
                   </Button>
                 </div> */}
               </Card>
+              <div className="col text-center">
+                  <Button
+                    className="btn-round"
+                    outline
+                    color="neutral"
+                    href="/login"
+                    size="lg"
+                    target="_blank"
+                  >
+                    Back to Login
+                  </Button>
+                </div>
             </Col>
           </Row>
         </Container>
+
         <div className="footer register-footer text-center">
           <h6>
             © {new Date().getFullYear()}, made with{" "}
             <i className="fa fa-heart heart" /> by Creative Tim
           </h6>
         </div>
-      </div>
+
     </div>
+  </div>
   );
 }
 

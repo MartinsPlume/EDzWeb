@@ -42,7 +42,8 @@ class NavigationBar extends Component {
         super(props)
     
         this.state = {
-             links: props.links
+             links: props.links,
+             role: props.userRole
         }
     }
 
@@ -51,6 +52,7 @@ class NavigationBar extends Component {
     }
 
     renderLogoutButton(){
+        console.log(this.state.userRole)
             return(
             <NavLink href={'/login'}>
                 <Button

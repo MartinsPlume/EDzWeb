@@ -30,7 +30,8 @@ const videoUrl = 'https://www.youtube.com/watch?v=2MF6cDl_m_Y'
 // core components
 
 function StudentHome() {
-    let pageHeader = React.createRef();
+
+  let pageHeader = React.createRef();
 
     React.useEffect(() => {
       if (window.innerWidth < 991) {
@@ -45,7 +46,7 @@ function StudentHome() {
         };
       }
     });
-  
+
     return (
       <>
         <div

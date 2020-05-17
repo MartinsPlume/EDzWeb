@@ -7,7 +7,7 @@ import {AuthHeader} from '../../authorization/AuthHeader'
 import {WebApiRequests} from '../../authorization/Contracts'
 
 // import resources
-import {ActionSwitchStrings, ModalStatusStrings} from '../../res/Strings'
+import {ActionSwitchStrings} from '../../res/Strings'
 
 function TeacherExercise() {
     const [exercise,setExercise] = React.useState()

@@ -78,7 +78,7 @@ export class App extends Component {
     const { routes } = state;
     return routes.map(route => {
         return (
-            <Nav className="mr-auto" navbar>
+            <Nav key={route.key} className="mr-auto" navbar>
               <NavItem>
                 <NavLink to={route.link} key={route.key}>
                   <Button
@@ -106,7 +106,8 @@ export class App extends Component {
       <Router>
         <div>
           <NavigationBar
-          links={this.renderMenuItems()}/>
+          links={this.renderMenuItems()}
+          userRole={this.state.currentRole}/>
             <div>
               <Switch>
                 {this.renderRoutes()}
