@@ -7,7 +7,7 @@ import ActioneHeader from 'components/ActionHeader';
 
 
 // import resources
-import {Strings, AssignmentChangeSwitchStrings, ModalStatusStrings} from '../../res/Strings'
+import {Strings, AssignmentChangeSwitchStrings} from '../../res/Strings'
 
 // reactstrap components
 import {
@@ -40,24 +40,6 @@ const AssignmentEdit = ({editAssignment, students, exercises, sendClose, editAss
         return exerciseNames.map(exercise => {
             return <option key={exercise}>{exercise}</option>
         })
-    }
-
-    const handleDelete = async (e) => {
-        e.preventDefault()
-
-        const requestOptions = {
-            method: 'DELETE',
-            headers: ({
-                'Authorization' : AuthHeader.authHeaderOnlyToken(),
-                'Content-Type': 'application/json'
-            })}
-        await fetch(
-            WebApiRequests.EDzControlTeacherAssignments + '/' + assignment.id,
-            requestOptions)
-            .then(response => {
-                console.log(response)
-            })
-        sendClose()
     }
 
     const handleChange = (e) => {

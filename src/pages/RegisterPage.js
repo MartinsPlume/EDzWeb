@@ -18,8 +18,6 @@
 */
 import React, { useCallback } from "react";
 
-import {history} from 'services/HistoryService'
-
 // import dependencies
 import { authenticationService } from "authorization/Authentication";
 import Logo from "components/Logo";
@@ -48,7 +46,7 @@ const handleRegister = useCallback(
         const { email, password } = event.target.elements;
         try {
         await authenticationService.register(email.value, password.value);
-        setTimeout(redirect(),2000)
+        redirect()
         } catch (error) {
         setAlertWarning(true)
         }
@@ -134,15 +132,15 @@ const handleRegister = useCallback(
                 </div>
             </Col>
           </Row>
+          <Row>
+              <div className="footer register-footer text-left">
+                <h6>
+                  © {new Date().getFullYear()}, designed with{" "}
+                  <i className="fa fa-heart heart" /> by Creative Tim
+                </h6>
+              </div>
+            </Row>
         </Container>
-
-        <div className="footer register-footer text-center">
-          <h6>
-            © {new Date().getFullYear()}, made with{" "}
-            <i className="fa fa-heart heart" /> by Creative Tim
-          </h6>
-        </div>
-
     </div>
   </div>
   );

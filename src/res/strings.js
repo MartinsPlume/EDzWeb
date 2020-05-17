@@ -53,6 +53,8 @@ export const Strings = {
     ShortInstructionText,
     BackText,
     WelcomeText,
+    FailedToSaveText,
+    SucceededToSaveText,
     DoNotDeleteUsedExercise,
 
     // Export hints

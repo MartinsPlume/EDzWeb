@@ -20,8 +20,8 @@ import NavigationBar from 'components/NavigationBar';
 // import reactstrap components
 import {Button,
    NavItem,
-   Nav,
-   Col} from "reactstrap";
+   Nav}
+   from "reactstrap";
 
 
 export class App extends Component {

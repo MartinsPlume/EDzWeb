@@ -69,20 +69,20 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
   return (
       <div>
         <div>
-        <Alert color="warning" isOpen={alertWarning}>
-          <Container>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
-              onClick={() => setAlertWarning(false)}
-            >
-              <i className="nc-icon nc-simple-remove" />
-            </button>
-            <span>{Strings.DoNotDeleteUsedExercise}</span>
-          </Container>
-        </Alert>
+          <Alert color="warning" isOpen={alertWarning}>
+            <Container>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+                onClick={() => setAlertWarning(false)}
+              >
+                <i className="nc-icon nc-simple-remove" />
+              </button>
+              <span>{Strings.DoNotDeleteUsedExercise}</span>
+            </Container>
+          </Alert>
       </div>
         <div>
           <MaterialTable

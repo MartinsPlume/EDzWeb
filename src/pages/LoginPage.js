@@ -147,15 +147,15 @@ const handleLogin = useCallback(
                 </div>
               </Col>
             </Row>
+            <Row>
+              <div className="footer register-footer text-left">
+                <h6>
+                  © {new Date().getFullYear()}, designed with{" "}
+                  <i className="fa fa-heart heart" /> by Creative Tim
+                </h6>
+              </div>
+            </Row>
           </Container>
-
-          <div className="footer register-footer text-center">
-            <h6>
-              © {new Date().getFullYear()}, designed with{" "}
-              <i className="fa fa-heart heart" /> by Creative Tim
-            </h6>
-          </div>
-
         </div>
       </div>
   );

@@ -3,7 +3,7 @@ import StudentHome from './StudentHome'
 import TeacherHome from './TeacherHome'
 import ErrorComponent from '../ErrorComponent'
 
-const HomeSwitch = ({}) => {
+const HomeSwitch = () => {
 
     let Output;
     let userRole = sessionStorage.getItem('userRole')
