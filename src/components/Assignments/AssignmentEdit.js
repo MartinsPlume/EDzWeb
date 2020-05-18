@@ -5,12 +5,12 @@ import {AuthHeader} from '../../authorization/AuthHeader'
 import {WebApiRequests} from '../../authorization/Contracts'
 import ActioneHeader from 'components/ActionHeader';
 
-
 // import resources
 import {Strings, AssignmentChangeSwitchStrings} from '../../res/Strings'
 
 // reactstrap components
 import {
+    Alert,
     Button,
     Container,
     Row,
@@ -21,27 +21,36 @@ import {
   } from "reactstrap";
 
 const AssignmentEdit = ({editAssignment, students, exercises, sendClose, editAssignmentExercise}) => {
+    
+    // Initialize main values
     const [assignment] = React.useState(editAssignment)
     const [userId, setUserId] = React.useState(editAssignment.userId)
     const [userEmail, setUserEmail] = React.useState(editAssignment.userEmail)
     const [shortInstruction, SetShortInstruction] = React.useState(editAssignment.shortInstruction)
     const [exerciseId, setExerciseId] = React.useState(editAssignment.exerciseId)
 
-    const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName)) 
+    // Get the dropdown list items from props
     const [emails] = React.useState(students.map(student => student.email))
+    const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName))
+
+    // Alert handler
+    const [alertWarning, setAlertWarning] = React.useState(false);
     
+    // Get dropdown values for users
     function renderEmails(){
         return emails.map(email => {
             return <option key={email}>{email}</option>
         })
     }
 
+    // Get dropdown values for exercises
     function renderExercises(){
         return exerciseNames.map(exercise => {
             return <option key={exercise}>{exercise}</option>
         })
     }
 
+    // On user entry change the values used for the WEB api request
     const handleChange = (e) => {
         switch(e.target.id){
             case AssignmentChangeSwitchStrings.UserEmail:
@@ -62,9 +71,11 @@ const AssignmentEdit = ({editAssignment, students, exercises, sendClose, editAss
         }
     }
 
+    // handle updating the values to database by using PUT Web API request with the correct assignment ID
     const addEdit = async (e) => {
         e.preventDefault()
-
+        
+        // Created a new object from assignment to get the correct JSON layout
         let updateData = assignment
         updateData.userId=userId
         updateData.shortInstruction=shortInstruction
@@ -82,20 +93,44 @@ const AssignmentEdit = ({editAssignment, students, exercises, sendClose, editAss
             WebApiRequests.EDzControlTeacherAssignments + '/' + assignment.id,
             requestOptions)
             .then(response => {
-                console.log(response)
+                // If save is not successful display the alert notification
+                if (!response.ok) {
+                    setAlertWarning(true)
+                }
+                // On successful save close the editing view
+                else{
+                    sendClose()
+                }
             })
-        
-        sendClose()
     }
 
-
     return (
+        //Layout:
+        // Render header with title and close button
+        // Render failure notificaiton in case of unsuccessful save
+        // Render editing form
+        // TODO add if filled out handler for each and display on the row with save button? Leaving empty columns for now.
         <div>
              <ActioneHeader
                 action = {Strings.EditTextWithSpaceForIcon}
                 title = {Strings.AssignmentText}
                 sendClose = {sendClose}
             />
+
+            <Alert color="warning" isOpen={alertWarning}>
+                <Container>
+                    <button
+                        type="button"
+                        className="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => setAlertWarning(false)}
+                    >
+                        <i className="nc-icon nc-simple-remove" />
+                    </button>
+                    <span>{Strings.FailedToSaveText}</span>
+                </Container>
+            </Alert>
 
             <Container>
                 <Form onSubmit = {addEdit}>

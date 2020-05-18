@@ -6,11 +6,15 @@ import ErrorComponent from '../ErrorComponent'
 // import resources
 import {UserRoleStrings} from '../../res/Strings'
 
+// Renders component depending on the user
 const ExerciseSwitch = () => {
 
-        let Output;
-        let userRole = sessionStorage.getItem('userRole')
+    // define output variable
+    let Output;
+    // get user value
+    let userRole = sessionStorage.getItem('userRole')
     
+    // Initialize Output depending on the user role
     switch (userRole)
     {
         case UserRoleStrings.UserStudent:
@@ -33,6 +37,7 @@ const ExerciseSwitch = () => {
             )
     }
 
+    // return defined and initialized Output component
     return Output;
 }
 

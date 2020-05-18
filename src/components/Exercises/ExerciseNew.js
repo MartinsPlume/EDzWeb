@@ -70,7 +70,6 @@ const ExerciseNew = ({sendClose}) => {
                 'Description' : exerciseDescription,
                 'HasVideo' : hasVideo,
                 'InstructionVideo' : InstructionVideo
-
              })
         }
 

@@ -11,6 +11,7 @@ import {Strings, AssignmentChangeSwitchStrings} from '../../res/Strings'
 
 // reactstrap components
 import {
+    Alert,
     Button,
     Container,
     Col,
@@ -27,8 +28,12 @@ const AssignmentNew = ({students, exercises, sendClose}) => {
     const [shortInstruction, SetShortInstruction] = React.useState()
     const [exerciseId, setExerciseId] = React.useState(() => (ControlObjUndefined(exercises)) ? exercises[0].id : '')
 
-    const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName)) 
+    // Get the dropdown list items from props
     const [emails] = React.useState(students.map(student => student.email))
+    const [exerciseNames] = React.useState(exercises.map(exercise => exercise.exerciseName))
+
+    // Alert handler
+    const [alertWarning, setAlertWarning] = React.useState(false);
 
     function renderEmails(){
         return emails.map(email => {
@@ -94,7 +99,22 @@ const AssignmentNew = ({students, exercises, sendClose}) => {
                 action = {Strings.NewTextWithSpaceForIcon}
                 title = {Strings.AssignmentText}
                 sendClose = {sendClose}
-                />
+            />
+
+            <Alert color="warning" isOpen={alertWarning}>
+                <Container>
+                    <button
+                        type="button"
+                        className="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                        onClick={() => setAlertWarning(false)}
+                    >
+                        <i className="nc-icon nc-simple-remove" />
+                    </button>
+                    <span>{Strings.FailedToSaveText}</span>
+                </Container>
+            </Alert>
 
             <Container>
                 <Form onSubmit = {handleSave}>

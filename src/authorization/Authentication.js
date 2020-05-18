@@ -3,9 +3,11 @@ import {WebApiRequests} from './Contracts';
 import { handleLoginResponse, handleRegisterResponse } from './HandleResponse';
 import jwt_decode from 'jwt-decode'
 
+// Used values from session storage
 const currentUserSubject = new BehaviorSubject(JSON.parse(sessionStorage.getItem('currentUser')));
 const currentUserRoleSubject = new BehaviorSubject(sessionStorage.getItem('userRole'))
 
+// export authenticationService
 export const authenticationService = {
     login,
     register,
@@ -16,14 +18,15 @@ export const authenticationService = {
     get currentUserRoleValue () {return currentUserRoleSubject.value}
 };
 
-function login(email, password) {
+// Handle login
+async function login(email, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({email, password })
     };
 
-    return fetch(
+    return await fetch(
         WebApiRequests.EDzControlLogin,
         requestOptions)
         .then(handleLoginResponse)
@@ -36,21 +39,23 @@ function login(email, password) {
         });
 }
 
-function register (email, password){
+// Handle registration
+async function register (email, password){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({email, password })
     };
     
-    return fetch(
+    return await fetch(
         WebApiRequests.EDzControlRegister,
         requestOptions)
         .then(handleRegisterResponse)
 }
 
+// Handles logging out
 function logout() {
-    // remove user from local storage to log user out
+    // remove user from local storage to log the user out
     sessionStorage.removeItem('currentUser');
     sessionStorage.removeItem('userRole');
     currentUserSubject.next(null);

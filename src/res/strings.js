@@ -22,7 +22,7 @@ const BackText = 'Return back'
 const WelcomeText = 'Welcome'
 const FailedToSaveText = 'Save failed!'
 const SucceededToSaveText = 'Saved successfully!'
-const DoNotDeleteUsedExercise = 'The exercise can not be deleted. Used by assignment!'
+const DoNotDeleteUsedExercise = 'The exercise can not be deleted. Used by an assignment!'
 
 // Hint strings
 const ExerciseTextHint = 'Enter the name of Your exercise'

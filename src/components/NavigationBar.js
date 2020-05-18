@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Paper Kit React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React, { Component } from 'react'
 import { authenticationService } from '../authorization/Authentication'
 
@@ -32,8 +14,8 @@ import {
     Row
   } from "reactstrap";
 
-  // import resources
-  import {Strings} from '../res/Strings'
+// import resources
+import {Strings} from '../res/Strings'
 import Logo from './Logo';
 
 class NavigationBar extends Component {
@@ -43,16 +25,16 @@ class NavigationBar extends Component {
     
         this.state = {
              links: props.links,
-             role: props.userRole
         }
     }
 
+    // handle log off button
     handleLogout(){
         authenticationService.logout()
     }
 
+    // render the logout button
     renderLogoutButton(){
-        console.log(this.state.userRole)
             return(
             <NavLink href={'/login'}>
                 <Button
@@ -72,6 +54,8 @@ class NavigationBar extends Component {
             )
         }
     
+    // render the Navigation bar layout
+    // Everything is in one component Reactsrap NavBar
     render(){
         return (
             <div>

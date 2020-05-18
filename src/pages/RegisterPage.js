@@ -29,7 +29,10 @@ import {
   Button, 
   Card, 
   Form, 
-  Input, 
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
   Container, 
   Row, 
   Col } from "reactstrap";
@@ -96,10 +99,24 @@ const handleRegister = useCallback(
                     <h3 className="title mx-auto">{Strings.WelcomeText}</h3>
                   </Col>
                 <Form onSubmit={handleRegister} className="register-form">
-                  <label>Email</label>
-                  <Input name="email" placeholder="Email" type="text" />
-                  <label>Password</label>
-                  <Input name="password" placeholder="Password" type="password" />
+                <label>Email</label>
+                    <InputGroup className="form-group-no-border">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="nc-icon nc-email-85" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input name="email" placeholder="Email" type="email" />
+                    </InputGroup>
+                    <label>Password</label>
+                    <InputGroup className="form-group-no-border">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="nc-icon nc-key-25" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input name="password" placeholder="Password" type="password" />
+                    </InputGroup>
                   <Button
                   block className="btn-round"
                   color="danger"

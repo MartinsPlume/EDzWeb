@@ -6,7 +6,6 @@ import {PrivateRoute} from './authorization/PrivateRoute'
 import {authenticationService} from './authorization/Authentication'
 
 // import components
-
 import Home from 'components/Home/Home'
 import Exercises from 'components/Exercises/Exercises'
 import Assignments from 'components/Assignments/Assignments';
@@ -23,11 +22,12 @@ import {Button,
    Nav}
    from "reactstrap";
 
-
-export class App extends Component {
+// Main component
+class App extends Component {
   constructor(props) {
     super(props)
   
+    // define routes
     this.state = {
       routes : [
         {
@@ -51,15 +51,16 @@ export class App extends Component {
           icon: 'nc-icon nc-bullet-list-67',
           component: Assignments
         }
-      ],
-      currentRole : authenticationService.currentUserRoleValue,
+      ]
     }
   }
 
+  // Delete session storage on logout
   componentWillUnmount(){
     authenticationService.logout()
   }
 
+  // Render routes from the state for the switch in Render
   renderRoutes() {
     const state = this.state;
     const { routes } = state;
@@ -73,6 +74,7 @@ export class App extends Component {
     });
   }
 
+  // render menu items from routes
   renderMenuItems() {
     const state = this.state;
     const { routes } = state;
@@ -101,6 +103,7 @@ export class App extends Component {
       });
     }
   
+  // render the main component
   render() {
     return (
       <Router>

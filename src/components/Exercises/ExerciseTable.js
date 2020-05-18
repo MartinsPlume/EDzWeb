@@ -16,14 +16,17 @@ import {
 
 const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
 
+  // Define columns
   const [columns] = React.useState([
       { title: 'Id', field: 'id', type: 'numeric' },
       { title: 'Name', field: 'exerciseName' },
       { title: 'Description', field: 'shortDescription'}
     ])
 
+  // Alert handler
   const [alertWarning, setAlertWarning] = React.useState(false);
 
+  // Edit button handler
   function handleEdit (rowData) {
       sendHandleChoice(
         ActionSwitchStrings.ActionSwitchEdit,
@@ -31,6 +34,7 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
            exercise => exercise.id === rowData.id))
     }
 
+  // Delete button handler with Delete exercise WEB API request
   async function handleDelete (e, rowData) {
     e.preventDefault()
 
@@ -44,15 +48,18 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
         WebApiRequests.EDzControlExercises + '/' + rowData.id,
         requestOptions)
         .then(response => {
+          // if exercise can't be deleted, it means it is used by an assigment
             if (!response.ok) {
                 setAlertWarning(true)
             }
+            // Refresh table, to update the view for user
             else{
               refreshTable()
             }
         })
-}
+  }
 
+  // Render data table from the props
   function renderTableData(){
     return exercises.map((exercise) => {
         const {id ,exerciseName, shortDescription } = exercise //destructuring
@@ -66,6 +73,10 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
       })
     }
 
+  // Layout
+  // Render warning on the top in case of failed save
+  // Render data table
+  // TODO Find out if background picture is necessary. It might contract the view.
   return (
       <div>
         <div>
@@ -114,7 +125,6 @@ const ExerciseTable = ({exercises,sendHandleChoice, refreshTable}) => {
             ]}
           />
         </div>
-        
       </div>
   )
 }
