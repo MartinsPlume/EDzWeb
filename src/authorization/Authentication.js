@@ -31,7 +31,7 @@ async function login(email, password) {
         requestOptions)
         .then(handleLoginResponse)
         .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            // store the user details and jwt token in session storage
             sessionStorage.setItem('currentUser', JSON.stringify(user));
             sessionStorage.setItem('userRole', jwt_decode(JSON.stringify(user)).UserRole);
             currentUserSubject.next(user);

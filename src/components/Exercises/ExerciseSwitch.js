@@ -1,7 +1,7 @@
 import React from 'react'
-import StudentExercise from './StudentExercise'
-import TeacherExercise from './TeacherExercise'
-import ErrorComponent from '../ErrorComponent'
+import StudentExercise from 'components/Exercises/StudentExercise'
+import TeacherExercise from 'components/Exercises/TeacherExercise'
+import ErrorComponent from 'components/ErrorComponent'
 
 // import resources
 import {UserRoleStrings} from '../../res/Strings'

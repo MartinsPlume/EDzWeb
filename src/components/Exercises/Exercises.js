@@ -1,5 +1,5 @@
 import React from 'react'
-import ExerciseSwitch from './ExerciseSwitch'
+import ExerciseSwitch from 'components/Exercises/ExerciseSwitch'
 
 const Exercises = () => {
     return (

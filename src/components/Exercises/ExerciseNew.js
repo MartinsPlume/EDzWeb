@@ -3,6 +3,7 @@ import React from 'react'
 // import dependencies
 import {AuthHeader} from 'authorization/AuthHeader'
 import {WebApiRequests} from 'authorization/Contracts'
+import Switch from "react-bootstrap-switch";
 import ActionHeader from 'components/ActionHeader'
 
 // import resources
@@ -20,18 +21,19 @@ import {
     Input
   } from "reactstrap";
 
-  import Switch from "react-bootstrap-switch";
-
 const ExerciseNew = ({sendClose}) => {
 
+    // Initialize main values
     const [exerciseName, SetExerciseName] = React.useState()
     const [exerciseShortDescription, SetExerciseShortDescription] = React.useState()
     const [exerciseDescription, SetExerciseDescription] = React.useState()
     const [hasVideo, setHasVideo] = React.useState()
     const [InstructionVideo, setInstructionVideo] = React.useState()
 
+    // Alert handler
     const [alertWarning, setAlertWarning] = React.useState(false);
 
+    // On user entry change the values used for the WEB api request
     const handleChange = (e) => {
         switch(e.target.id){
             case ExerciseChangeSwitchStrings.ExerciseName:
@@ -54,7 +56,7 @@ const ExerciseNew = ({sendClose}) => {
                 break;
         }
     }
-
+    // handle saving the values by Fetch
     const handleSave = async (e) => {
         e.preventDefault()
 
@@ -78,15 +80,22 @@ const ExerciseNew = ({sendClose}) => {
             requestOptions)
             .then(response => {
                 if (!response.ok) {
+                    // If save is not successful display the alert notification
                     setAlertWarning(true)
                 }
                 else{
+                    // On successful save close the editing view
                     sendClose()
                 }
             })
     }
 
     return (
+        //Layout:
+        // Render header with title and close button
+        // Render failure notificaiton in case of unsuccessful save
+        // Render editing form
+        // TODO add if filled out handler for each and display on the row with save button? Leaving empty columns for now.
         <div>
             <ActionHeader
                     action = {Strings.NewTextWithSpaceForIcon}

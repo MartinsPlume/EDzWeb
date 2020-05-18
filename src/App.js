@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 // import dependencies
 import {Route, Switch, NavLink, BrowserRouter as Router } from 'react-router-dom';
-import {PrivateRoute} from './authorization/PrivateRoute'
-import {authenticationService} from './authorization/Authentication'
+import {PrivateRoute} from 'authorization/PrivateRoute'
+import {authenticationService} from 'authorization/Authentication'
 
 // import components
 import Home from 'components/Home/Home'

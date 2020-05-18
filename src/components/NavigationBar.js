@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { authenticationService } from '../authorization/Authentication'
+import React, {Component} from 'react'
+import {authenticationService} from 'authorization/Authentication'
 
 // reactstrap components
 import {
@@ -15,8 +15,8 @@ import {
   } from "reactstrap";
 
 // import resources
-import {Strings} from '../res/Strings'
-import Logo from './Logo';
+import {Strings} from 'res/Strings'
+import Logo from 'components/Logo'
 
 class NavigationBar extends Component {
 

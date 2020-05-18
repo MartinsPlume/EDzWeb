@@ -6,7 +6,7 @@ import {AuthHeader} from 'authorization/AuthHeader'
 import {WebApiRequests} from 'authorization/Contracts'
 
 // import resources
-import {Strings, ActionSwitchStrings} from '../../res/Strings'
+import {Strings, ActionSwitchStrings} from 'res/Strings'
 
 // import reacstrap components
 import {
