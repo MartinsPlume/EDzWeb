@@ -1,7 +1,7 @@
 ### EDzWeb
 
 Final thesis for University
- - CreativeTim paperkit form
+ - CreativeTim paperkit form --> https://www.creative-tim.com/product/paper-kit-react
  - CRUD for .NET Core JWT backend
  
 This is part of the project with .NET Core backend:
