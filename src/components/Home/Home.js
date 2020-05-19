@@ -1,5 +1,5 @@
 
-import HomeSwitch from './HomeSwitch'
+import HomeSwitch from 'components/Home/HomeSwitch'
 
 import React from 'react'
 

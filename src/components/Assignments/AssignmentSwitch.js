@@ -1,12 +1,13 @@
 import React from 'react'
-import TeacherAssignment from './TeacherAssignment'
-import StudentAssignment from './StudentAssignment'
+import TeacherAssignment from 'components/Assignments/TeacherAssignment'
+import StudentAssignment from 'components/Assignments/StudentAssignment'
 
-import ErrorComponent from '../ErrorComponent'
+import ErrorComponent from 'components/ErrorComponent'
 
 // import resources
-import {UserRoleStrings} from '../../res/Strings'
+import {UserRoleStrings} from 'res/Strings'
 
+// controls the view depending on user role
 const AssignmentSwitch = () => {
     let Output;
         let userRole = sessionStorage.getItem('userRole')

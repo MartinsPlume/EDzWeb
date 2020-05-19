@@ -1,10 +1,8 @@
 import { authenticationService } from './Authentication';
-import jwt_decode from 'jwt-decode'
 
 export const AuthHeader = {
     authHeader,
-    authHeaderOnlyToken,
-    authHeaderUser
+    authHeaderOnlyToken
 };
 
 function authHeader() {
@@ -17,16 +15,12 @@ function authHeader() {
     }
 }
 
+// return authorization header only with jwt token
 function authHeaderOnlyToken() {
-    // return authorization header with jwt token
     let currentUserToken = authenticationService.currentUserValue.accessToken
     if (currentUserToken) {
         return ('Bearer ' + currentUserToken) ;
     } else {
         return {};
     }
-}
-
-function authHeaderUser(){
-    return jwt_decode(authenticationService.currentUserValue.accessToken).sub
 }

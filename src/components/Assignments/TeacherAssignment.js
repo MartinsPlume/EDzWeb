@@ -1,29 +1,38 @@
 import React from 'react'
 
 // import dependencies
-import AssignmentTable from './AssignmentTable'
-import AssignmentActionSwitch from './AssignmentActionSwitch'
-import {AuthHeader} from '../../authorization/AuthHeader'
-import {WebApiRequests} from '../../authorization/Contracts'
+import AssignmentTable from 'components/Assignments/AssignmentTable'
+import AssignmentActionSwitch from 'components/Assignments/AssignmentActionSwitch'
+import {AuthHeader} from 'authorization/AuthHeader'
+import {WebApiRequests} from 'authorization/Contracts'
 
 // import resources
-import {ActionSwitchStrings, ModalStatusStrings} from '../../res/Strings'
+import {ActionSwitchStrings} from 'res/Strings'
 
 function TeacherAssignment() {
 
-    const [assignment,setAssignment] = React.useState()
+    // Define values passed as props to children.
+    // fetch
     const [exercises, setExercises] = React.useState([])
     const [assignments,setAssignments] = React.useState([])
-    const [assignmentSwitchProperty,setAssignmentSwitchProperty] = React.useState('idle')
-    const [tableMessage, setTableMessage] = React.useState(ModalStatusStrings.ModalIdle)
-    const [students,setStudents] = React.useState()
+    const [students,setStudents] = React.useState([])
 
+    // assigned when user presses edit in the table
+    const [assignment,setAssignment] = React.useState()
+
+
+    // switch variable
+    const [assignmentSwitchProperty,setAssignmentSwitchProperty] = React.useState('idle')
+
+    // on component update fetch values.
+    // TODO find more efficient way. Update only when neccessary.
     React.useEffect(() =>{
         fetchStudents()
         fetchAssignments()
         fetchExercises()
       },[])
 
+    // handle users action in the table
     function handleChoice(choice, editAssignment){
 
         if (assignmentSwitchProperty !== choice) {
@@ -35,15 +44,13 @@ function TeacherAssignment() {
         }
     }
 
+    // Close the editing form
     function setAssignmentSwitchIdle(){
         setAssignmentSwitchProperty(ActionSwitchStrings.ActionSwitchIdle)
         fetchAssignments()
     }
 
-    function setTableModal(message){
-        setTableMessage(message)
-    }
-
+    // get assignments with API request
     async function fetchAssignments (){
         const requestOptions = {
             method: 'GET',
@@ -59,6 +66,7 @@ function TeacherAssignment() {
           .catch(error => console.log({ error, isLoading: false }));
       }
     
+    // get exercises with API request
     async function fetchExercises (){
     const requestOptions = {
         method: 'GET',
@@ -80,6 +88,7 @@ function TeacherAssignment() {
         headers: AuthHeader.authHeader()
     };
 
+    // get student list for form
     await fetch(
         WebApiRequests.EDzControlGetStudents,
         requestOptions)
@@ -89,7 +98,10 @@ function TeacherAssignment() {
         .catch(error => console.log({ error, isLoading: false }));
     }
 
+    
     return (
+        // render Assignment editing form
+        // render Assignment table
         <div>
             <AssignmentActionSwitch
             students = {students}
@@ -97,12 +109,10 @@ function TeacherAssignment() {
             type = {assignmentSwitchProperty}
             sendClose = {setAssignmentSwitchIdle}
             editAssignment = {assignment}
-            setTableMessage={setTableModal}
             />
             <AssignmentTable
             assignments = {assignments}
             sendHandleChoice={handleChoice}
-            tableMessage={tableMessage}
             refreshTable={fetchAssignments}
             />
             

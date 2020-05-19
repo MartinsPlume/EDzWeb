@@ -22,7 +22,7 @@ import {
 
 const AssignmentEdit = ({editAssignment, students, exercises, sendClose, editAssignmentExercise}) => {
     
-    // Initialize main values
+    // Define main values
     const [assignment] = React.useState(editAssignment)
     const [userId, setUserId] = React.useState(editAssignment.userId)
     const [userEmail, setUserEmail] = React.useState(editAssignment.userEmail)

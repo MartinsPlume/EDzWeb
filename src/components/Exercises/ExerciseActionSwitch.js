@@ -1,13 +1,13 @@
 import React from 'react'
 
 // import dependencies
-import ExerciseNew from './ExerciseNew';
-import ExerciseEdit from './ExerciseEdit';
+import ExerciseNew from 'components/Exercises/ExerciseNew';
+import ExerciseEdit from 'components/Exercises/ExerciseEdit';
 
 // import resources
 import {ActionSwitchStrings} from '../../res/Strings'
 
-
+// Control exercise editing form
 const ExerciseActionSwitch = ({
     type,
     sendClose,
@@ -29,6 +29,9 @@ const ExerciseActionSwitch = ({
 
 
         case ActionSwitchStrings.ActionSwitchEdit:
+            // get instruction video before render component. 
+            //Null reference if accessed inside component should empty value if no exercises to choose from
+            // TODO add default user in backend for solution with user
             let instructionVideo = editExercise.hasVideo
             ? editExercise.instructionVideo
             : ''

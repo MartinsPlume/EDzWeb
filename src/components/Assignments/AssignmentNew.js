@@ -35,18 +35,21 @@ const AssignmentNew = ({students, exercises, sendClose}) => {
     // Alert handler
     const [alertWarning, setAlertWarning] = React.useState(false);
 
+    // Get dropdown values for users
     function renderEmails(){
         return emails.map(email => {
             return <option key={email}>{email}</option>
         })
     }
 
+    // Get dropdown values for exercises
     function renderExercises(){
         return exerciseNames.map(exercise => {
             return <option key={exercise}>{exercise}</option>
         })
     }
 
+    // On user entry change the values used for the WEB api request
     const handleChange = (e) => {
         switch(e.target.id){
             case AssignmentChangeSwitchStrings.UserEmail:
@@ -66,6 +69,7 @@ const AssignmentNew = ({students, exercises, sendClose}) => {
         }
     }
 
+    // handle updating the values to database by using POST Web API request
     const handleSave = async (e) => {
         e.preventDefault()
 
@@ -85,7 +89,14 @@ const AssignmentNew = ({students, exercises, sendClose}) => {
             WebApiRequests.EDzControlTeacherAssignments,
             requestOptions)
             .then(response => {
-                console.log(response)
+                // If save is not successful display the alert notification
+                if (!response.ok) {
+                    setAlertWarning(true)
+                }
+                // On successful save close the editing view
+                else{
+                    sendClose()
+                }
             })
         
         sendClose()
@@ -93,6 +104,10 @@ const AssignmentNew = ({students, exercises, sendClose}) => {
 
 
     return (
+        //Layout:
+        // Render header with title and close button
+        // Render failure notificaiton in case of unsuccessful save
+        // Render editing form
         <div>
 
             <ActioneHeader

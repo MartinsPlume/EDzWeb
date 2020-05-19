@@ -4,9 +4,10 @@ import React from 'react'
 import AssignmentList from './AssignmentList'
 
 // import resources
-import {ActionSwitchStrings} from '../../res/Strings'
-import ExerciseView from '../Exercises/ExerciseView';
+import {ActionSwitchStrings} from 'res/Strings'
+import ExerciseView from 'components/Exercises/ExerciseView';
 
+// Switches between views on assignment list and exercise
 const AssignmentListSwitch = ({
     type,
     exercise,

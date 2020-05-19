@@ -11,12 +11,14 @@ import {ActionSwitchStrings} from '../../res/Strings'
 
 const AssignmentTable = ({assignments, sendHandleChoice, refreshTable}) => {
 
+  // Define columns
   const [columns] = React.useState([
       { title: 'Id', field: 'id', type: 'numeric' },
       { title: 'Name', field: 'userEmail' },
       { title: 'Instruction', field: 'shortInstruction'},
     ])
 
+  // Edit button handler
   function handleEdit (rowData) {
       sendHandleChoice(
         ActionSwitchStrings.ActionSwitchEdit,
@@ -24,6 +26,7 @@ const AssignmentTable = ({assignments, sendHandleChoice, refreshTable}) => {
            assignment => assignment.id === rowData.id))
     }
 
+  // Render data table from the props
   function renderTableData(){
     return assignments.map((assignment) => {
         const {id ,userEmail, shortInstruction } = assignment //destructuring
@@ -37,6 +40,7 @@ const AssignmentTable = ({assignments, sendHandleChoice, refreshTable}) => {
       })
     }
 
+  // Delete button handler with Delete assignment WEB API request
   async function handleDelete (e, rowData) {
     e.preventDefault()
 
@@ -60,6 +64,9 @@ const AssignmentTable = ({assignments, sendHandleChoice, refreshTable}) => {
 }
 
   return (
+  // Layout
+  // Render warning on the top in case of failed save
+  // Render data table
       <div>
         <div>
           <MaterialTable

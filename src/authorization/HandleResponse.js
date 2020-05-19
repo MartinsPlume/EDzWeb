@@ -24,7 +24,6 @@ export function handleRegisterResponse(response) {
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if ([401, 403].indexOf(response.status) !== -1) {
-                console.log('Register failed')
             }
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);

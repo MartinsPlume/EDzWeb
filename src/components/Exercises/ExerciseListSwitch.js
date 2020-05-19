@@ -1,16 +1,13 @@
 import React from 'react'
 
 // import dependencies
-import ExercisesList from './ExercisesList';
-
+import ExercisesList from 'components/Exercises/ExercisesList';
 import ExerciseView from 'components/Exercises/ExerciseView';
 
-
-
 // import resources
+import {ActionSwitchStrings} from 'res/Strings'
 
-import {ActionSwitchStrings} from '../../res/Strings'
-
+// Switches between views on assignment list and exercise
 const ExerciseListSwitch = ({
     type,
     exercises,

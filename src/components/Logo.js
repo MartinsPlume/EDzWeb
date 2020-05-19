@@ -1,5 +1,5 @@
 import React from 'react'
-var logo = require('../res/edzlogo.JPG')
+var logo = require('res/edzlogo.JPG')
 
 function Logo() {
     return (

@@ -11,6 +11,7 @@ import {
     ListGroupItemText,
   } from "reactstrap";
 
+  // display exercises list for users
 const ExercisesList = ({exercises, handleChoice}) => {
 
     function renderListGroupItems() {

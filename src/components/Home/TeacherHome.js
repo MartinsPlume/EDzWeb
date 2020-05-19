@@ -29,7 +29,6 @@ import { Button, Container } from "reactstrap";
 const videoUrl = 'https://www.youtube.com/watch?v=9RuNWWdhHSo'
 
 // core components
-
 function TeacherHome() {
 
     let pageHeader = React.createRef();

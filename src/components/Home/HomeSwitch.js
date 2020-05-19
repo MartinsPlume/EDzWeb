@@ -1,7 +1,7 @@
 import React from 'react'
-import StudentHome from './StudentHome'
-import TeacherHome from './TeacherHome'
-import ErrorComponent from '../ErrorComponent'
+import StudentHome from 'components/Home/StudentHome'
+import TeacherHome from 'components/Home/TeacherHome'
+import ErrorComponent from 'components/ErrorComponent'
 
 const HomeSwitch = () => {
 

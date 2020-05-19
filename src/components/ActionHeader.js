@@ -8,8 +8,9 @@ import {
   } from "reactstrap";
 
 // resources
-import {Strings} from '../res/Strings'
+import {Strings} from 'res/Strings'
 
+// Edit form header used by assignments and exercises
 const ActioneHeader = ({action, title, sendClose}) => {
     return (
             <Row>

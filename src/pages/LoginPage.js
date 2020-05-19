@@ -21,8 +21,6 @@ import React, { useCallback } from "react";
 // import dependencies
 import { authenticationService } from "authorization/Authentication";
 
-// import resources
-
 // reactstrap components
 import {
   Alert,

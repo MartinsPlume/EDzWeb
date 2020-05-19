@@ -14,7 +14,8 @@ import {
 // import resources
 import {Strings} from '../../res/Strings'
 
-
+// User's view on exercise
+// TODO create input layout from table on backend. new branch for this.
 const ExerciseView = ({exercise, sendClose}) => {
 
     function renderVideo(){

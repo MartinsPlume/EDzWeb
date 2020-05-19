@@ -9,6 +9,7 @@ import {
     ListGroupItem,
   } from "reactstrap";
 
+// display assignment list for users
 const AssignmentList = ({assignments, handleChoice}) => {
 
     function renderListGroupItems() {

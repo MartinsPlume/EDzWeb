@@ -23,7 +23,7 @@ import {
 
 const ExerciseNew = ({sendClose}) => {
 
-    // Initialize main values
+    // Define main values
     const [exerciseName, SetExerciseName] = React.useState()
     const [exerciseShortDescription, SetExerciseShortDescription] = React.useState()
     const [exerciseDescription, SetExerciseDescription] = React.useState()
