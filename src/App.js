@@ -31,21 +31,28 @@ class App extends Component {
     this.state = {
       routes : [
         {
-          title: ' Home',
+          title: ' Sākums',
           key: 'home',
           link: '/',
           icon: 'nc-icon nc-globe',
           component: Home
         },
         {
-          title: ' Exercises',
+          title: ' Uzdevumi',
           key: 'exercises',
           link: '/exercises',
-          icon: 'nc-icon nc-tile-56',
+          icon: 'nc-icon nc-key-25',
           component: Exercises
         },
         {
-          title: ' Assignments',
+          title: ' Mācies',
+          key: 'exercises',
+          link: '/exercises',
+          icon: 'nc-icon nc-bulb-63',
+          component: Exercises
+        },
+        {
+          title: ' Veicamie darbi',
           key: 'Assignments',
           link: '/assignments',
           icon: 'nc-icon nc-bullet-list-67',

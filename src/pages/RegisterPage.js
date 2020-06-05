@@ -85,7 +85,7 @@ const handleRegister = useCallback(
     <div
         className="page-header"
         style={{
-          backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
+          backgroundImage: "url(" + require("assets/img/example-background.jpg") + ")"
         }}
       >
         <Container>
@@ -95,7 +95,7 @@ const handleRegister = useCallback(
                 <Col sm="12" md={{ size: 9, offset: 4 }}>
                     <Logo/>
                   </Col>
-                  <Col sm="12" md={{ size: 9, offset: 3 }}>
+                  <Col sm="12" md={{ size: 9, offset: 2 }}>
                     <h3 className="title mx-auto">{Strings.WelcomeText}</h3>
                   </Col>
                 <Form onSubmit={handleRegister} className="register-form">

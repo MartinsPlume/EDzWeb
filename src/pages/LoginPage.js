@@ -79,7 +79,7 @@ const handleLogin = useCallback(
       <div
           className="page-header"
           style={{
-            backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/example-background.jpg") + ")"
           }}
         >
           <Container>
@@ -89,27 +89,27 @@ const handleLogin = useCallback(
                     <Col sm="12" md={{ size: 9, offset: 4 }}>
                       <Logo/>
                     </Col>
-                    <Col sm="12" md={{ size: 9, offset: 3 }}>
+                    <Col sm="12" md={{ size: 9, offset: 2 }}>
                       <h3 className="title mx-auto">{Strings.WelcomeText}</h3>
                     </Col>
                   <Form onSubmit={handleLogin} className="register-form">
-                    <label>Email</label>
+                    <label>{Strings.EmailText}</label>
                     <InputGroup className="form-group-no-border">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
                           <i className="nc-icon nc-email-85" />
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input name="email" placeholder="Email" type="email" />
+                      <Input name="email" placeholder={Strings.EmailText} type="email" />
                     </InputGroup>
-                    <label>Password</label>
+                    <label>{Strings.PasswordText}</label>
                     <InputGroup className="form-group-no-border">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
                           <i className="nc-icon nc-key-25" />
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input name="password" placeholder="Password" type="password" />
+                      <Input name="password" placeholder={Strings.PasswordText} type="password" />
                     </InputGroup>
                     <Button
                       block
@@ -117,7 +117,7 @@ const handleLogin = useCallback(
                       color="danger"
                       type="submit"
                     >
-                      Login
+                      {Strings.LoginText}
                     </Button>
                   </Form>
                   {/* <div className="forgot">
@@ -140,7 +140,7 @@ const handleLogin = useCallback(
                     size="lg"
                     target="_blank"
                   >
-                    Register
+                    {Strings.RegisterText}
                   </Button>
                 </div>
               </Col>
